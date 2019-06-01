@@ -8,9 +8,10 @@
 &lt;li&gt;&lt;a href="https://github.com/kuribayashi4"&gt;Github&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Publications&lt;/h2&gt;
+&lt;h3&gt;(Refereed) International Conferences and Workshops&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;栗林樹生, 大内啓樹, 井之直也, Paul Reisert, 三好利昇, 鈴木潤, 乾健太郎. 複数の言語単位に対するスパン表現を用いた論述構造解析. 言語処理学会第25回年次大会, pp.990-993, March 2019.&lt;/li&gt;
-&lt;li&gt;栗林樹生, 伊藤拓海, 内山香, 鈴木潤, 乾健太郎. 言語モデルを用いた日本語の語順評価と基本語順の分析. 言語処理学会第25回年次大会, pp.1053-1056, March …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;栗林樹生/Tatsuki Kuribayashi&lt;/h2&gt;
+&lt;li&gt;Tatsuki Kuribayashi, Hiroki Ouchi, Naoya Inoue, Paul Reisert, Toshinori Miyoshi, Jun Suzuki, Kentaro Inui.
+"An Empirical Study of Span …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;栗林樹生/Tatsuki Kuribayashi&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;second year master's student  &lt;/li&gt;
 &lt;li&gt;Inui-Suzuki Lab (NLP)  &lt;/li&gt;
@@ -19,11 +20,20 @@
 &lt;li&gt;&lt;a href="https://github.com/kuribayashi4"&gt;Github&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Publications&lt;/h2&gt;
+&lt;h3&gt;(Refereed) International Conferences and Workshops&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Tatsuki Kuribayashi, Hiroki Ouchi, Naoya Inoue, Paul Reisert, Toshinori Miyoshi, Jun Suzuki, Kentaro Inui.
+"An Empirical Study of Span Representations in Argumentation Structure Parsing"
+In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL-2019), 2019/07 (accepted for publication).
+(acceptance rate: ???/???=???%)&lt;/li&gt;
+&lt;li&gt;Paul Reisert, Naoya Inoue, Tatsuki Kuribayashi and Kentaro Inui. Feasible Annotation Scheme for Capturing Policy Argument Reasoning using Argument Templates. In Proceedings of The 5th Workshop on Argument Mining, pp.79-89, November 2018. 
+(acceptance rate: 18/32=56.3%)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Domestic Conferences&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;栗林樹生, 大内啓樹, 井之直也, Paul Reisert, 三好利昇, 鈴木潤, 乾健太郎. 複数の言語単位に対するスパン表現を用いた論述構造解析. 言語処理学会第25回年次大会, pp.990-993, March 2019.&lt;/li&gt;
 &lt;li&gt;栗林樹生, 伊藤拓海, 内山香, 鈴木潤, 乾健太郎. 言語モデルを用いた日本語の語順評価と基本語順の分析. 言語処理学会第25回年次大会, pp.1053-1056, March 2019. &lt;/li&gt;
 &lt;li&gt;伊藤拓海, 栗林樹生, 小林隼人, 鈴木潤, 乾健太郎. ライティング支援を想定した情報補完型生成. 言語処理学会第25回年次大会, pp.970-973, March 2019. &lt;/li&gt;
-&lt;li&gt;Paul Reisert, Naoya Inoue, Tatsuki Kuribayashi and Kentaro Inui. Feasible Annotation Scheme for Capturing Policy Argument Reasoning using Argument Templates. In Proceedings of The 5th Workshop on Argument Mining, pp.79-89, November 2018. &lt;/li&gt;
 &lt;li&gt;Tatsuki Kuribayashi, Paul Reisert, Naoya Inoue and Kentaro Inui. Towards Exploiting Argumentative Context for Argumentative Relation Identification. 言語処理学会第24回年次大会, pp.284-287, March 2018.&lt;/li&gt;
 &lt;li&gt;Tatsuki Kuribayashi, Paul Reisert, Naoya Inoue, Kentaro Inui. Examining Macro-level Argumentative Structure Features for Argumentative Relation Identification. 第4回自然言語処理シンポジウム・第234回自然言語処理研究会, 6pages, December 2017.&lt;/li&gt;
 &lt;/ul&gt;
@@ -42,9 +52,9 @@
 &lt;/ul&gt;
 &lt;h2&gt;Interest&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Persuasive discourse&lt;/li&gt;
-&lt;li&gt;Discourse structure&lt;/li&gt;
-&lt;li&gt;Coherence, Cohesion&lt;/li&gt;
+&lt;li&gt;Discourse parsing&lt;/li&gt;
+&lt;li&gt;Coherence, cohesion&lt;/li&gt;
+&lt;li&gt;Natural language generation&lt;/li&gt;
 &lt;li&gt;Other NLP fields...&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Other activities&lt;/h2&gt;
