@@ -24,6 +24,30 @@
     <link rel="stylesheet" href="kuribayashi4.github.io/theme/css/main.css" type="text/css" />
     <link href="kuribayashi4.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
         title="Tatsuki Kuribayashi Atom Feed" />
+
+    <style>
+    .typewriter span {
+        font-family: monospace;
+        color:#0000;
+        background:
+            linear-gradient(-90deg,#a8afb0 5px,#0000 0) 10px 0,
+            linear-gradient(#2e302e 0 0) 0 0;
+        background-size:calc(var(--n)*1ch) 200%;
+        -webkit-background-clip:padding-box,text;
+        background-clip:padding-box,text;
+        background-repeat:no-repeat;
+        animation: 
+            b .5s infinite steps(1),   
+            t calc(var(--n)*.01s) steps(var(--n)) forwards;
+        }
+        @keyframes t{
+        from {background-size:0 200%}
+        }
+        @keyframes b{
+        50% {background-position:0 -100%,0 0}
+        }
+
+    </style>
 </head>
 
 <body>
@@ -32,12 +56,15 @@
             <div role="main" class="content">
                 <article style="padding: 2%">
                     <h1>Tatsuki Kuribayashi (栗林樹生)</h1>
-                    <div style="width: 50%; font-size: 11.5pt; font-family: 'Courier New', Courier, monospace; padding-bottom: 2%;">
-                    My Japanese name (栗林樹生) has many <font color=”#006400”>trees  (木)</font> perhaps because my parents run a flower shop in a greenery rural area, but for some reason I have become interested in trees in language.
+                    <div style="width: 50%; font-size: 11pt; font-family: 'Courier New', Courier, monospace;">
+                        <span>My Japanese name (栗林樹生) has many <font style="color: #117511;">trees (木)</font> perhaps because my parents run a flower shop in a greenery rural area, but for some reason I have become interested in trees in language.</span>
+                        <br>
+                        <br>
+                        <span>My research covers incremental syntactic, discourse, and reasoning processing underlying in humans/machines/corpus. </span>
                     </div>
                     <table>
                         <tr style="align-items: left;">
-                          <td style="width: 150px; display: inline-block">
+                          <td style="width: 150px; display: inline-block; margin-top: 5%;">
                             <img src="./images/face_2024.png" alt="写真" title="profile" width="140" height="145">
                           </td>
                           <td style="width: 60%; display: inline-block">
@@ -520,17 +547,17 @@
                     </ul>
                     <h2>Skills</h2>
                     <ul>
-                        <li>Python (6 years)</li>
-                        <li>R (a little)</li>
-                        <li>TypeScript, React (a litte...)</li>
+                        <li>Python (more than 6 years)</li>
+                        <li>R, TypeScript, React (a litte...)</li>
                         <li>Tools in NLP/ML research: git, Docker, GCP, pytorch, w&b, TeX...</li>
-                        <li>Designing API specifications for NLP models (working as a subcontractor)</li>
-                        <li>Developing evaluation systems for NLP competition (working as a subcontractor)</li>
+                        <li>Designing API specifications for NLP models (with an experience of engineering adviser)</li>
+                        <li>Developing evaluation/leader-board systems for NLP competition (with an experience of engineering adviser)</li>
                     </ul>
                     <h2>Hobbies</h2>
                     <ul>
-                        <li>Playing the saxophone (around 10 years)</li>
+                        <li>Saxophone (playing more than 10 years)</li>
                         <li>Skiing</li>
+                        <li>Traveling</li>
                     </ul>
                 </article>
             </div>
