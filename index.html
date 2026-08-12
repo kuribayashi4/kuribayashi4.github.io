@@ -22,9 +22,9 @@
         rel='stylesheet' type='text/css'>
     <style>
     :root {
-        --profile-photo-column-width: 150px;
-        --profile-photo-max-width: 140px;
-        --profile-photo-top-spacing: 10px;
+        --profile-photo-column-width: 140px;
+        --profile-photo-max-width: 120px;
+        --profile-photo-top-spacing: 5px;
     }
     .profile-summary,
     .profile-summary tbody {
@@ -34,6 +34,7 @@
     .profile-summary-row {
         display: grid;
         grid-template-columns: minmax(100px, var(--profile-photo-column-width)) minmax(0, 1fr);
+        min-height: 124px;
     }
     .profile-photo-cell {
         display: block;
@@ -42,18 +43,25 @@
     }
     .profile-photo {
         display: block;
-        height: min(calc(100% - var(--profile-photo-top-spacing)), 143.84px);
-        left: 0;
+        height: min(calc(100% - var(--profile-photo-top-spacing)), 124px);
+        left: 50%;
         max-width: min(calc(100% - 10px), var(--profile-photo-max-width));
         object-fit: contain;
         object-position: left top;
         position: absolute;
         top: var(--profile-photo-top-spacing);
+        transform: translateX(-50%);
         width: auto;
     }
     .profile-details-cell {
         display: block;
         width: auto;
+    }
+    .intro-copy {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 10pt;
+        max-width: 720px;
+        width: 72%;
     }
     .typewriter span {
         font-family: monospace;
@@ -90,10 +98,12 @@
         }
         .publication-tabs {
             background-color: #f7f7f7;
-            border: 1px solid #ddd;
-            border-radius: 6px;
             margin-bottom: 1.5em;
             padding: 1em;
+        }
+        .publication-tabs > h2 {
+            margin-bottom: 0.65em;
+            margin-top: 0;
         }
         .publication-tab-list {
             display: flex;
@@ -129,30 +139,33 @@
             white-space: nowrap;
         }
         .profile-social-links {
+            align-items: center;
             display: flex;
-            gap: 0.55em;
-            list-style: none;
-            margin: 0.45em 0;
+            gap: 0.35em;
+            margin-top: 0.35em;
         }
         .profile-icon-link {
             align-items: center;
+            border: 1px solid #c8cdd2;
             border-radius: 50%;
+            box-sizing: border-box;
             display: inline-flex;
-            height: 2em;
+            height: 1.8em;
             justify-content: center;
-            transition: background-color 0.15s ease, transform 0.15s ease;
-            width: 2em;
+            transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+            width: 1.8em;
         }
         .profile-icon-link:hover,
         .profile-icon-link:focus-visible {
             background-color: #eee;
+            border-color: currentColor;
             transform: translateY(-1px);
         }
         .profile-icon {
             display: block;
             fill: currentColor;
-            height: 1.4em;
-            width: 1.4em;
+            height: 1em;
+            width: 1em;
         }
         .profile-icon-link.scholar {
             color: #4285f4;
@@ -163,6 +176,12 @@
         .profile-icon-link.github {
             color: #181717;
         }
+        @media (max-width: 720px) {
+            .intro-copy {
+                max-width: none;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -172,7 +191,7 @@
             <div role="main" class="content">
                 <article style="padding: 2%">
                     <h1>Tatsuki Kuribayashi (栗林樹生)</h1>
-                    <div style="width: 55%; min-width:480px; font-size: 10pt; font-family: 'Courier New', Courier, monospace;">
+                    <div class="intro-copy">
                         <span>My Japanese name, 栗林樹生, contains several kanji related to <font style="color: #117511;">trees (木)</font>. My parents run a flower shop and love gardening, and, true to my name, I have also become fascinated by trees—linguistic ones!</span>
                         <br>
                         <br>
@@ -186,30 +205,26 @@
                           <td class="profile-details-cell">
                             <ul>
                               <li>I joined <a href="https://mbzuai.ac.ae/research/department/natural-language-processing-department/">MBZUAI</a> as a Tenure-Track Assistant Professor of Natural Language Processing in the Division of Computing and Mathematical Sciences in August 2025.</li>
-                              <li>Previously, I was a postdoctoral associate at MBZUAI, advised by Prof. Timothy Baldwin. I received my Ph.D. from <a href="https://www.nlp.ecei.tohoku.ac.jp/">Tohoku University</a>, where I was advised by Prof. Kentaro Inui.</li>
-                              <li>Email: Tatsuki.Kuribayashi at mbzuai.ac.ae</li>
-                              <li><a href="https://docs.google.com/document/d/1EyIgvUHRHemEshNcW6z2uZyPTyh5bzS_UJl_HnN1U7Q/edit?usp=sharing">CV</a></li>
-                              <li class="profile-social-links">
-                                <a class="profile-icon-link scholar" href="https://scholar.google.co.jp/citations?user=-bqmkaAAAAAJ&amp;hl=ja" aria-label="Google Scholar" title="Google Scholar">
-                                  <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0-24L0 9.5l4.84 3.87A8 8 0 0 1 12 9a8 8 0 0 1 7.16 4.37L24 9.5z"/></svg>
-                                </a>
-                                <a class="profile-icon-link twitter" href="https://twitter.com/ttk_kuribayashi?lang=en" aria-label="Twitter" title="Twitter">
-                                  <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723 10.1 10.1 0 0 1-3.127 1.184A4.92 4.92 0 0 0 11.78 8.29 13.98 13.98 0 0 1 1.64 3.15a4.92 4.92 0 0 0 1.523 6.574 4.9 4.9 0 0 1-2.23-.616v.06a4.92 4.92 0 0 0 3.95 4.827 4.96 4.96 0 0 1-2.224.084 4.93 4.93 0 0 0 4.6 3.42A9.88 9.88 0 0 1 0 19.54 13.94 13.94 0 0 0 7.548 21.75c9.057 0 14.01-7.503 14.01-14.01 0-.21 0-.42-.015-.63a10 10 0 0 0 2.41-2.54z"/></svg>
-                                </a>
-                                <a class="profile-icon-link github" href="https://github.com/kuribayashi4" aria-label="GitHub" title="GitHub">
-                                  <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .297z"/></svg>
-                                </a>
+                              <li>I lead the <a href="https://palm-mbzuai.github.io/">Processing and Acquisition of Language in Machines and Mind (PALM)</a> 🌴 group at MBZUAI.</li>
+                              <li>Email: Tatsuki.Kuribayashi at mbzuai.ac.ae · <a href="https://docs.google.com/document/d/1EyIgvUHRHemEshNcW6z2uZyPTyh5bzS_UJl_HnN1U7Q/edit?usp=sharing">CV</a>
+                                <span class="profile-social-links">
+                                  <a class="profile-icon-link scholar" href="https://scholar.google.co.jp/citations?user=-bqmkaAAAAAJ&amp;hl=ja" aria-label="Google Scholar" title="Google Scholar">
+                                    <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0-24L0 9.5l4.84 3.87A8 8 0 0 1 12 9a8 8 0 0 1 7.16 4.37L24 9.5z"/></svg>
+                                  </a>
+                                  <a class="profile-icon-link twitter" href="https://twitter.com/ttk_kuribayashi?lang=en" aria-label="Twitter" title="Twitter">
+                                    <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723 10.1 10.1 0 0 1-3.127 1.184A4.92 4.92 0 0 0 11.78 8.29 13.98 13.98 0 0 1 1.64 3.15a4.92 4.92 0 0 0 1.523 6.574 4.9 4.9 0 0 1-2.23-.616v.06a4.92 4.92 0 0 0 3.95 4.827 4.96 4.96 0 0 1-2.224.084 4.93 4.93 0 0 0 4.6 3.42A9.88 9.88 0 0 1 0 19.54 13.94 13.94 0 0 0 7.548 21.75c9.057 0 14.01-7.503 14.01-14.01 0-.21 0-.42-.015-.63a10 10 0 0 0 2.41-2.54z"/></svg>
+                                  </a>
+                                  <a class="profile-icon-link github" href="https://github.com/kuribayashi4" aria-label="GitHub" title="GitHub">
+                                    <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .297z"/></svg>
+                                  </a>
+                                </span>
                               </li>
                             </ul>
                           </td>
                         </tr>
                       </table>
-                    <h2>News</h2>
-                    <div class="highlight-news" style="width: 70%;">
-                    <p>I lead the <a href="https://palm-mbzuai.github.io/">Processing and Acquisition of Language in Machines and Mind (PALM)</a> 🌴 group at MBZUAI.</p>
-                    </div>
-                    <h2>Publications</h2>
                     <div class="publication-tabs">
+                    <h2>Publications</h2>
                     <div class="publication-tab-list" role="tablist" aria-label="Publication lists">
                         <button class="publication-tab" id="featured-publications-tab" type="button" role="tab"
                             aria-selected="true" aria-controls="featured-publications">Latest &amp; Selected</button>
@@ -586,89 +601,89 @@
                     </ul>
                     </section>
                     <section id="japan-publications" role="tabpanel" aria-labelledby="japan-publications-tab" hidden>
-                    <h3 id="japan-domestic">Domestic Conference Papers and Articles</h3>
+                    <h3 id="japan-domestic">Domestic Conference Presentations</h3>
                     <ul>
-                        <li>吉田 遼, 磯野 真之介, 染谷 大河, 大関 洋平, <u>栗林 樹生</u>. <a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/TS2-13.pdf">サプライザルによってガーデンパス効果を説明できる言語モデルは存在する</a>. 言語処理学会第32回年次大会, pp. 451–456, 2026/3.</li>
-                        <li>工藤 慧音, 青木 洋一, <u>栗林 樹生</u>, 曾根 周作, 谷口 雅弥, Ana Brassard, 坂口 慶祐, 乾 健太郎. <a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B5-12.pdf">多段算術推論タスクにおける思考の連鎖の忠実性</a>. 言語処理学会第32回年次大会, pp. 2066–2071, 2026/3.</li>
-                        <li>木迫 璃玖, <u>栗林 樹生</u>, 笹野 遼平. <a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B5-17.pdf">大規模言語モデル内における文法回路と計算回路の重なり</a>. 言語処理学会第32回年次大会, pp. 2095–2100, 2026/3.</li>
-                        <li>稲葉 達郎, 乾 健太郎, <u>栗林 樹生</u>. <a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/Q7-10.pdf">合成データによる事前学習から見る言語と音楽の関係性</a>. 言語処理学会第32回年次大会, pp. 3444–3448, 2026/3.</li>
-                        <li><u>栗林 樹生</u>, 大関 洋平, Souhaib Ben Taieb, 乾 健太郎, Timothy Baldwin. 大規模言語モデルの浅い層が人間の速い言語処理を再現する. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
-                        <li>上田 亮, <u>栗林 樹生</u>, 神藤 駿介, 乾 健太郎. RNNの回帰行列を凍結しても統語構造の獲得は損なわれない. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
-                        <li>木迫 璃玖, <u>栗林 樹生</u>, 笹野 遼平. 大規模言語モデル内部における言語と計算領域の区分. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
-                        <li><u>栗林樹生</u>, 大関洋平, Timothy Baldwin. 大規模言語モデルの文処理は人間らしいのか？. 言語処理学会第30回年次大会,4pages,2024/3.</li>
-                        <li><u>栗林樹生</u>, 上田亮, 吉田遼, 大関洋平, Ted Briscoe, Timothy Baldwin. どのような言語モデルが不可能な言語を学習してしまうのか？---語順普遍を例に---. 言語処理学会第30回年次大会, 4pages, 2024/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2024/award.html">優秀賞</a></span></li>
-                        <li>青木洋一, 工藤慧音, 曾根周作, <u>栗林樹生</u>, 谷口雅弥, 坂口慶祐, 乾健太郎. 言語モデルの思考連鎖的推論における探索戦略の動的変化. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, 谷口雅弥, 曾根周作, 坂口慶祐, 乾健太郎. 算術推論問題における自己回帰型言語モデルの内部機序. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>葉夢宇, <u>栗林樹生</u>, 小林悟郎, 鈴木潤. 文脈内学習における文脈内事例の寄与度推定. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>都地悠馬, 高橋惇, 横井祥, <u>栗林樹生</u>, 上田亮, 宮原英之. 長距離相互作用する文脈依存言語における相転移現象 -言語モデルの創発現象を統計力学の視点で理解する-. 言語処理学会第30回年次大会,4pages,2024/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2024/award.html">委員特別賞</a></span></li>
-                        <li><u>栗林樹生</u>. 百聞は一見に如かず？視覚情報は言語モデルに文の階層構造を教示するか. 言語処理学会第29回年次大会, 4pages, 2023/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2023/award.html">委員特別賞</a></span></li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformer言語モデルの予測ヘッド内バイアスによる頻度補正効果. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>葉夢宇, <u>栗林樹生</u>, 舟山弘晃, 鈴木潤. 思考連鎖指示における大規模言語モデルの否定表現理解. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>藤原吏生, <u>栗林樹生</u>, 徳久良子, 乾健太郎. 主題化における人間と言語モデルの対照. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 笹野遼平, 乾健太郎. 日本語話者の項省略判断に関するアノテーションとモデリング. 言語処理学会第29回年次大会, 4pages, 2023/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2023/award.html">委員特別賞</a></span></li>
-                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 坂口慶祐, 乾健太郎. 算術問題におけるニューラルモデルの構成的推論能力. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 坂口慶祐, 乾健太郎. ニューラル記号推論における推論過程の教示方法. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第254回自然言語処理研究会, 6pages, 2022/11. <span class="award-badge">👑 <a href="https://nl-ipsj.or.jp/award/">優秀研究賞</a></span></li>
-                        <li>青木洋一, 工藤慧音, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 乾健太郎. 推論過程の性質がニューラルネットの多段推論能力に与える影響. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li><u>栗林樹生</u>. 視覚情報は言語モデルに人間らしい統語的汎化を促すか. 第17回NLP若手の会 シンポジウム (YANS), 2022/08. <span class="award-badge">👑 <a href="https://yans.anlp.jp/entry/yans2022report">奨励賞</a></span></li>
-                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの混ぜ合わせ作用. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li><u>栗林樹生</u>, 大関洋平, Ana Brassard, 乾健太郎. ニューラル言語モデルの過剰な作業記憶. 言語処理学会第28回年次大会, pp.1530-1535, 2022/03.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの作用. 言語処理学会第28回年次大会, pp.1072-1077, 2022/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2022/award.html">委員特別賞</a></span></li>
-                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平. 情報量に基づく日本語項省略の分析. 言語処理学会第28回年次大会, pp.442-447, 2022/03.</li>
-                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 乾健太郎. 多段の数量推論タスクに対する適応的なモデルの振る舞いの検証. 言語処理学会第28回年次大会, pp.168-172, 2022/03.</li>
+                        <li>吉田 遼, 磯野 真之介, 染谷 大河, 大関 洋平, <u>栗林 樹生</u>. サプライザルによってガーデンパス効果を説明できる言語モデルは存在する. 言語処理学会第32回年次大会, pp. 451–456, 2026/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/TS2-13.pdf">link</a>]</li>
+                        <li>工藤 慧音, 青木 洋一, <u>栗林 樹生</u>, 曾根 周作, 谷口 雅弥, Ana Brassard, 坂口 慶祐, 乾 健太郎. 多段算術推論タスクにおける思考の連鎖の忠実性. 言語処理学会第32回年次大会, pp. 2066–2071, 2026/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B5-12.pdf">link</a>]</li>
+                        <li>木迫 璃玖, <u>栗林 樹生</u>, 笹野 遼平. 大規模言語モデル内における文法回路と計算回路の重なり. 言語処理学会第32回年次大会, pp. 2095–2100, 2026/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B5-17.pdf">link</a>]</li>
+                        <li>稲葉 達郎, 乾 健太郎, <u>栗林 樹生</u>. 合成データによる事前学習から見る言語と音楽の関係性. 言語処理学会第32回年次大会, pp. 3444–3448, 2026/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/Q7-10.pdf">link</a>]</li>
+                        <li><u>栗林 樹生</u>, 大関 洋平, Souhaib Ben Taieb, 乾 健太郎, Timothy Baldwin. 大規模言語モデルの浅い層が人間の速い言語処理を再現する. 言語処理学会第31回年次大会, 4pages, 2025/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/E10-3.pdf">link</a>]</li>
+                        <li>上田 亮, <u>栗林 樹生</u>, 神藤 駿介, 乾 健太郎. RNNの回帰行列を凍結しても統語構造の獲得は損なわれない. 言語処理学会第31回年次大会, 4pages, 2025/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/D5-4.pdf">link</a>]</li>
+                        <li>木迫 璃玖, <u>栗林 樹生</u>, 笹野 遼平. 大規模言語モデル内部における言語と計算領域の区分. 言語処理学会第31回年次大会, 4pages, 2025/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/P2-7.pdf">link</a>]</li>
+                        <li><u>栗林樹生</u>, 大関洋平, Timothy Baldwin. 大規模言語モデルの文処理は人間らしいのか？. 言語処理学会第30回年次大会,4pages,2024/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/E10-1.pdf">link</a>]</li>
+                        <li><u>栗林樹生</u>, 上田亮, 吉田遼, 大関洋平, Ted Briscoe, Timothy Baldwin. どのような言語モデルが不可能な言語を学習してしまうのか？---語順普遍を例に---. 言語処理学会第30回年次大会, 4pages, 2024/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/E7-1.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2024/award.html">優秀賞</a></span></li>
+                        <li>青木洋一, 工藤慧音, 曾根周作, <u>栗林樹生</u>, 谷口雅弥, 坂口慶祐, 乾健太郎. 言語モデルの思考連鎖的推論における探索戦略の動的変化. 言語処理学会第30回年次大会, 4pages, 2024/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/A11-6.pdf">link</a>]</li>
+                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, 谷口雅弥, 曾根周作, 坂口慶祐, 乾健太郎. 算術推論問題における自己回帰型言語モデルの内部機序. 言語処理学会第30回年次大会, 4pages, 2024/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/P9-21.pdf">link</a>]</li>
+                        <li>葉夢宇, <u>栗林樹生</u>, 小林悟郎, 鈴木潤. 文脈内学習における文脈内事例の寄与度推定. 言語処理学会第30回年次大会, 4pages, 2024/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/P9-15.pdf">link</a>]</li>
+                        <li>都地悠馬, 高橋惇, 横井祥, <u>栗林樹生</u>, 上田亮, 宮原英之. 長距離相互作用する文脈依存言語における相転移現象 -言語モデルの創発現象を統計力学の視点で理解する-. 言語処理学会第30回年次大会,4pages,2024/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/E3-4.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2024/award.html">委員特別賞</a></span></li>
+                        <li><u>栗林樹生</u>. 百聞は一見に如かず？視覚情報は言語モデルに文の階層構造を教示するか. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/D7-3.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2023/award.html">委員特別賞</a></span></li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformer言語モデルの予測ヘッド内バイアスによる頻度補正効果. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/C3-5.pdf">link</a>]</li>
+                        <li>葉夢宇, <u>栗林樹生</u>, 舟山弘晃, 鈴木潤. 思考連鎖指示における大規模言語モデルの否定表現理解. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/C10-1.pdf">link</a>]</li>
+                        <li>藤原吏生, <u>栗林樹生</u>, 徳久良子, 乾健太郎. 主題化における人間と言語モデルの対照. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B5-1.pdf">link</a>]</li>
+                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 笹野遼平, 乾健太郎. 日本語話者の項省略判断に関するアノテーションとモデリング. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/D1-3.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2023/award.html">委員特別賞</a></span></li>
+                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/D3-1.pdf">link</a>]</li>
+                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 坂口慶祐, 乾健太郎. 算術問題におけるニューラルモデルの構成的推論能力. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/Q8-13.pdf">link</a>]</li>
+                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 坂口慶祐, 乾健太郎. ニューラル記号推論における推論過程の教示方法. 言語処理学会第29回年次大会, 4pages, 2023/3. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/A5-4.pdf">link</a>]</li>
+                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第254回自然言語処理研究会, 6pages, 2022/11. [<a href="https://ipsj.ixsq.nii.ac.jp/records/222602">link</a>] <span class="award-badge">👑 <a href="https://nl-ipsj.or.jp/award/">優秀研究賞</a></span></li>
+                        <li>青木洋一, 工藤慧音, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 乾健太郎. 推論過程の性質がニューラルネットの多段推論能力に与える影響. 第17回NLP若手の会 シンポジウム (YANS), 2022/08. [<a href="https://yans.anlp.jp/entry/yans2022program">link</a>]</li>
+                        <li><u>栗林樹生</u>. 視覚情報は言語モデルに人間らしい統語的汎化を促すか. 第17回NLP若手の会 シンポジウム (YANS), 2022/08. [<a href="https://yans.anlp.jp/entry/yans2022program">link</a>] <span class="award-badge">👑 <a href="https://yans.anlp.jp/entry/yans2022report">奨励賞</a></span></li>
+                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第17回NLP若手の会 シンポジウム (YANS), 2022/08. [<a href="https://yans.anlp.jp/entry/yans2022program">link</a>]</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの混ぜ合わせ作用. 第17回NLP若手の会 シンポジウム (YANS), 2022/08. [<a href="https://yans.anlp.jp/entry/yans2022program">link</a>]</li>
+                        <li><u>栗林樹生</u>, 大関洋平, Ana Brassard, 乾健太郎. ニューラル言語モデルの過剰な作業記憶. 言語処理学会第28回年次大会, pp.1530-1535, 2022/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/PT3-4.pdf">link</a>]</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの作用. 言語処理学会第28回年次大会, pp.1072-1077, 2022/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/A5-5.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2022/award.html">委員特別賞</a></span></li>
+                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平. 情報量に基づく日本語項省略の分析. 言語処理学会第28回年次大会, pp.442-447, 2022/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/D3-4.pdf">link</a>]</li>
+                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 乾健太郎. 多段の数量推論タスクに対する適応的なモデルの振る舞いの検証. 言語処理学会第28回年次大会, pp.168-172, 2022/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/A2-4.pdf">link</a>]</li>
                         <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平 情報量に基づく日本語項省略の分析. NLP若手の会 (YANS) 第16回シンポジウム,
-                            2021/08.</li>
+                            2021/08. [<a href="https://yans.anlp.jp/entry/yans2021program">link</a>]</li>
                         <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. 非線形モジュールの加法分解に基づくTransformerレイヤーの解析. NLP若手の会 (YANS)
-                            第16回シンポジウム, 2021/08.</li>
+                            第16回シンポジウム, 2021/08. [<a href="https://yans.anlp.jp/entry/yans2021program">link</a>]</li>
                         <li><u>栗林樹生</u>, 大関洋平, 伊藤拓海, 吉田遼, 浅原正幸, 乾健太郎. 予測の正確な言語モデルがヒトらしいとは限らない. 言語処理学会第27回年次大会,
                             pp.267-272,
-                            2021/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2021/">委員特別賞</a></span></li>
+                            2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/C2-3.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2021/">委員特別賞</a></span></li>
                         <li><u>栗林樹生</u>, 大関洋平, 伊藤拓海, 吉田遼, 浅原正幸, 乾健太郎. 日本語の読みやすさに対する情報量に基づいた統一的な解釈. 言語処理学会第27回年次大会,
-                            pp.723-728, 2021/03.</li>
+                            pp.723-728, 2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/P4-1.pdf">link</a>]</li>
                         <li>伊藤拓海, <u>栗林樹生</u>, 日高雅俊, 鈴木潤, 乾健太郎. Langsmith: 人とシステムの協働による論文執筆. 言語処理学会第27回年次大会,
                             pp.1834-1839,
-                            2021/03. [<a href="https://editor.langsmith.co.jp/">システム</a> | <a href="https://help.editor.langsmith.co.jp/">ドキュメント</a> | <a href="https://youtu.be/xgzxLpcydG8">動画</a>]</li>
-                        <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 人と言語モデルが捉える文の主題. 言語処理学会第27回年次大会, pp.1307-1312, 2021/03.</li>
+                            2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/P9-15.pdf">link</a> | <a href="https://editor.langsmith.co.jp/">システム</a> | <a href="https://help.editor.langsmith.co.jp/">ドキュメント</a> | <a href="https://youtu.be/xgzxLpcydG8">動画</a>]</li>
+                        <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 人と言語モデルが捉える文の主題. 言語処理学会第27回年次大会, pp.1307-1312, 2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/E7-1.pdf">link</a>]</li>
                         <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerの文脈を混ぜる作用と混ぜない作用. 言語処理学会第27回年次大会,
                             pp.1224-1229,
-                            2021/03.</li>
+                            2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/A7-2.pdf">link</a>]</li>
                         <li>大内啓樹, 鈴木潤, 小林颯介, 横井祥, <u>栗林樹生</u>, 吉川将司,
-                            乾健太郎. 事例ベース依存構造解析のための依存関係表現学習. 言語処理学会第27回年次大会, pp.497-502, 2021/03.</li>
+                            乾健太郎. 事例ベース依存構造解析のための依存関係表現学習. 言語処理学会第27回年次大会, pp.497-502, 2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/D3-4.pdf">link</a>]</li>
                         <li>大竹孝樹, 横井祥, 井之上直也, 高橋諒, <u>栗林樹生</u>,
-                            乾健太郎. 物語におけるイベントの顕現性推定と物語類似性計算への応用. 言語処理学会第27回年次大会, pp.1324-1329, 2021/03.</li>
+                            乾健太郎. 物語におけるイベントの顕現性推定と物語類似性計算への応用. 言語処理学会第27回年次大会, pp.1324-1329, 2021/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2021/pdf_dir/E7-4.pdf">link</a>]</li>
                         <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 日本語言語モデルが選択する文形式の傾向と文脈の影響 ー 主題化・有標語順について. NLP若手の会 (YANS)
-                            第15回シンポジウム, 2020/09.</li>
+                            第15回シンポジウム, 2020/09. [<a href="https://yans.anlp.jp/entry/yans2020program">link</a>]</li>
                         <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. ベクトル長に基づく注意機構と残差結合の包括的な分析. NLP若手の会 (YANS) 第15回シンポジウム,
-                            2020/09.</li>
+                            2020/09. [<a href="https://yans.anlp.jp/entry/yans2020program">link</a>]</li>
                         <li><u>栗林樹生</u>, 伊藤拓海, 鈴木潤, 乾健太郎. 日本語語順分析に言語モデルを用いることの妥当性について. 言語処理学会第26回年次大会,
                             pp.493-496,
-                            2020/03.<br>[<a href="./pdfs/nlp2020.pdf">slides</a>]</li>
+                            2020/03.<br>[<a href="https://www.anlp.jp/proceedings/annual_meeting/2020/pdf_dir/E2-5.pdf">link</a> | <a href="./pdfs/nlp2020.pdf">slides</a>]</li>
                         <li>小林 悟郎, <u>栗林樹生</u>, 横井 祥, 鈴木潤, 乾健太郎. ベクトル⻑に基づく自己注意機構の解析. 言語処理学会第26回年次大会, pp.965-968,
-                            2020/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/award/nenji.html">最優秀賞</a></span></li>
+                            2020/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2020/pdf_dir/B4-5.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/award/nenji.html">最優秀賞</a></span></li>
                         <li>大内 啓樹, 鈴木 潤, 小林 颯介, 横井 祥, <u>栗林樹生</u>, 乾健太郎. スパン間の類似性に基づく事例ベース構造予測. 言語処理学会第26回年次大会,
-                            pp.331-334, 2020/03.</li>
+                            pp.331-334, 2020/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2020/pdf_dir/D1-1.pdf">link</a>]</li>
                         <li>大竹 孝樹, 横井 祥, 井之上 直也, 高橋 諒, <u>栗林樹生</u>, 乾健太郎. 言語モデルによる物語中のイベントの顕現性推定. 言語処理学会第26回年次大会,
-                            pp.1089-1092, 2020/03.</li>
+                            pp.1089-1092, 2020/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2020/pdf_dir/B5-4.pdf">link</a>]</li>
                         <li>伊藤拓海, <u>栗林樹生</u>, 萩原正人, 鈴木潤, 乾健太郎. 英語論文執筆のための統合ライティング支援環境. 第14回NLP若手の会 シンポジウム (YANS),
-                            2019/08.</li>
+                            2019/08. [<a href="https://yans.anlp.jp/entry/yans2019program">link</a>]</li>
                         <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 鈴木潤, 乾健太郎. 文脈を考慮する言語モデルが捉える品詞情報とその軌跡. 第14回NLP若手の会 シンポジウム
-                            (YANS), 2019/08.</li>
+                            (YANS), 2019/08. [<a href="https://yans.anlp.jp/entry/yans2019program">link</a>]</li>
                         <li><u>栗林樹生</u>, 大内啓樹, 井之直也, Paul Reisert, 三好利昇, 鈴木潤, 乾健太郎. 
-                            複数の言語単位に対するスパン表現を用いた論述構造解析. 言語処理学会第25回年次大会, pp.990-993, 2019/03.</li>
+                            複数の言語単位に対するスパン表現を用いた論述構造解析. 言語処理学会第25回年次大会, pp.990-993, 2019/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2019/pdf_dir/D5-1.pdf">link</a>]</li>
                         <li>*<u>栗林樹生</u>, *伊藤拓海, 内山香, 鈴木潤, 乾健太郎. (* 第一著者と第二著者の貢献度は等しい．)
-                             言語モデルを用いた日本語の語順評価と基本語順の分析. 言語処理学会第25回年次大会, pp.1053-1056, 2019/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/award/nenji.html#y2019">若手奨励賞</a></span>
+                             言語モデルを用いた日本語の語順評価と基本語順の分析. 言語処理学会第25回年次大会, pp.1053-1056, 2019/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2019/pdf_dir/P5-5.pdf">link</a>] <span class="award-badge">👑 <a href="https://www.anlp.jp/award/nenji.html#y2019">若手奨励賞</a></span>
                         </li>
                         <li>*伊藤拓海, *<u>栗林樹生</u>, 小林隼人, 鈴木潤, 乾健太郎. (* 第一著者と第二著者の貢献度は等しい．)
-                             ライティング支援を想定した情報補完型生成. 言語処理学会第25回年次大会, pp.970-973, 2019/03.
+                             ライティング支援を想定した情報補完型生成. 言語処理学会第25回年次大会, pp.970-973, 2019/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2019/pdf_dir/B5-4.pdf">link</a>]
                         </li>
                         <li><u>Tatsuki Kuribayashi</u>, Paul Reisert, Naoya Inoue and Kentaro Inui. Towards
                             Exploiting Argumentative Context for Argumentative Relation Identification. 
-                            言語処理学会第24回年次大会, pp.284-287, 2018/03.</li>
+                            言語処理学会第24回年次大会, pp.284-287, 2018/03. [<a href="https://www.anlp.jp/proceedings/annual_meeting/2018/pdf_dir/A2-4.pdf">link</a>]</li>
                         <li><u>Tatsuki Kuribayashi</u>, Paul Reisert, Naoya Inoue, Kentaro Inui. Examining
                             Macro-level Argumentative Structure Features for Argumentative Relation Identification.
-                             第4回自然言語処理シンポジウム・第234回自然言語処理研究会, 6pages, 2017/12.
+                             第4回自然言語処理シンポジウム・第234回自然言語処理研究会, 6pages, 2017/12. [<a href="https://www.ipsj.or.jp/kenkyukai/event/nl234.html">link</a>]
                         </li>
                     </ul>
                     </section>
@@ -722,8 +737,8 @@
                             <br>「テクストの数理的モデリングと、数理モデルを通したテクストらしさの解明への挑戦」<br>
                             <em>Understanding Textuality Through Mathematical Modeling of Text.</em></li>
                     </ul>
-                    <h2>Service</h2>
                     <div class="publication-tabs service-tabs">
+                    <h2>Service</h2>
                     <div class="publication-tab-list" role="tablist" aria-label="Service categories">
                         <button class="publication-tab" id="international-service-tab" type="button" role="tab"
                             aria-selected="true" aria-controls="international-service">International</button>
@@ -769,8 +784,8 @@
                         </ul>
                     </section>
                     </div>
-                    <h2>Research Visits, Talks, and Writings</h2>
                     <div class="publication-tabs talks-tabs">
+                    <h2>Research Visits, Talks, and Writings</h2>
                     <div class="publication-tab-list" role="tablist" aria-label="Talk and writing categories">
                         <button class="publication-tab" id="international-talks-tab" type="button" role="tab"
                             aria-selected="true" aria-controls="international-talks">International</button>
