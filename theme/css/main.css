@@ -7,11 +7,6 @@ Colors :
 - #F0F0F0
 */
 
-/* Imports */
-
-@import url("pygment.css");
-
-
 /* Latout */
 
 article,
@@ -235,34 +230,6 @@ ol.archive li .tags
 
 /* Social */
 
-.social {
-  list-style-type: none;
-  padding-left: 20px;
-}
-
-.social li {
-  clear: both;
-}
-
-.social a {}
-
-.social i { 
-  float: left;
-  margin-right: 3px;
-  padding-top: 4px;
-}
-.social a[href*='twitter.com'] + i:before {content: url('../images/icons/twitter-18px.png'); }
-.social a[href*='linkedin.com'] + i:before {content: url('../images/icons/linkedin-18px.png'); }
-.social a[href*='github.com'] + i:before {content: url('../images/icons/github-18px.png'); }
-.social a[href*='google.com'] + i:before {content: url('../images/icons/google-18px.png'); }
-.social a[href*='delicious.com']:before {content: url('../images/icons/delicious-18px.png'); }
-.social a[href*='digg.com']:before {content: url('../images/icons/digg-18px.png'); }
-.social a[href*='facebook.com']:before {content: url('../images/icons/facebook-18px.png'); }
-.social a[href*='stackoverflow.com']:before {content: url('../images/icons/stackoverfow-18px.png'); }
-.social a[href*='rss.xml']:before {content: url('../images/icons/feed-18px.png'); }
-.social a[href*='atom.xml']:before {content: url('../images/icons/feed-18px.png'); }
-
-
 /* Tag cloud */
 
 ul.tagcloud {
@@ -308,4 +275,3 @@ li.tag-4 { font-size: 110%; margin: 0 1em; }
     margin: 0 4%;
   }
 }
-

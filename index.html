@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -20,12 +20,41 @@
     <link
         href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Code+Pro'
         rel='stylesheet' type='text/css'>
-    </link>
-    <link rel="stylesheet" href="kuribayashi4.github.io/theme/css/main.css" type="text/css" />
-    <link href="kuribayashi4.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-        title="Tatsuki Kuribayashi Atom Feed" />
-
     <style>
+    :root {
+        --profile-photo-column-width: 150px;
+        --profile-photo-max-width: 140px;
+        --profile-photo-top-spacing: 10px;
+    }
+    .profile-summary,
+    .profile-summary tbody {
+        display: block;
+        width: 100%;
+    }
+    .profile-summary-row {
+        display: grid;
+        grid-template-columns: minmax(100px, var(--profile-photo-column-width)) minmax(0, 1fr);
+    }
+    .profile-photo-cell {
+        display: block;
+        padding-right: 10px;
+        position: relative;
+    }
+    .profile-photo {
+        display: block;
+        height: min(calc(100% - var(--profile-photo-top-spacing)), 143.84px);
+        left: 0;
+        max-width: min(calc(100% - 10px), var(--profile-photo-max-width));
+        object-fit: contain;
+        object-position: left top;
+        position: absolute;
+        top: var(--profile-photo-top-spacing);
+        width: auto;
+    }
+    .profile-details-cell {
+        display: block;
+        width: auto;
+    }
     .typewriter span {
         font-family: monospace;
         color:#0000;
@@ -59,6 +88,81 @@
             margin: 0;
             font-weight: bold;
         }
+        .publication-tabs {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 1.5em;
+            padding: 1em;
+        }
+        .publication-tab-list {
+            display: flex;
+            gap: 0.35em;
+            border-bottom: 1px solid #999;
+            margin-bottom: 1em;
+        }
+        .publication-tab {
+            appearance: none;
+            background: #eee;
+            border: 1px solid #999;
+            border-bottom: 0;
+            border-radius: 4px 4px 0 0;
+            color: #333;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1em;
+            font-weight: bold;
+            padding: 0.55em 0.9em;
+        }
+        .publication-tab[aria-selected="true"] {
+            background: white;
+            position: relative;
+            top: 1px;
+        }
+        .compact-publications {
+            margin-top: 0.4em;
+        }
+        .compact-publications li {
+            margin-bottom: 0.5em;
+        }
+        .award-badge {
+            white-space: nowrap;
+        }
+        .profile-social-links {
+            display: flex;
+            gap: 0.55em;
+            list-style: none;
+            margin: 0.45em 0;
+        }
+        .profile-icon-link {
+            align-items: center;
+            border-radius: 50%;
+            display: inline-flex;
+            height: 2em;
+            justify-content: center;
+            transition: background-color 0.15s ease, transform 0.15s ease;
+            width: 2em;
+        }
+        .profile-icon-link:hover,
+        .profile-icon-link:focus-visible {
+            background-color: #eee;
+            transform: translateY(-1px);
+        }
+        .profile-icon {
+            display: block;
+            fill: currentColor;
+            height: 1.4em;
+            width: 1.4em;
+        }
+        .profile-icon-link.scholar {
+            color: #4285f4;
+        }
+        .profile-icon-link.twitter {
+            color: #1da1f2;
+        }
+        .profile-icon-link.github {
+            color: #181717;
+        }
     </style>
 </head>
 
@@ -69,24 +173,32 @@
                 <article style="padding: 2%">
                     <h1>Tatsuki Kuribayashi (栗林樹生)</h1>
                     <div style="width: 55%; min-width:480px; font-size: 10pt; font-family: 'Courier New', Courier, monospace;">
-                        <span>My Japanese name (栗林樹生) is full of kanji related to <font style="color: #117511;">tree (木)</font> as my parents run a flower shop and love gardening, and as indicated literally, I've also been interested in trees (in language)!</span>
+                        <span>My Japanese name, 栗林樹生, contains several kanji related to <font style="color: #117511;">trees (木)</font>. My parents run a flower shop and love gardening, and, true to my name, I have also become fascinated by trees—linguistic ones!</span>
                         <br>
                         <br>
-                        <span>My research is mainly focused on the interdisciplinary (NLP and cogsci) field of understanding incremental sentence processing, discourse processing, and reasoning process underlying in machines/humans.</span>
+                        <span>My research lies at the intersection of natural language processing and cognitive science. I study incremental sentence processing, discourse processing, and the reasoning processes underlying language use in humans and machines.</span>
                     </div>
-                    <table>
-                        <tr style="align-items: left;">
-                          <td style="width: 150px; display: inline-block; margin-top: 5%;">
-                            <img src="./images/face_2024.png" alt="写真" title="profile" width="140" height="145">
+                    <table class="profile-summary">
+                        <tr class="profile-summary-row">
+                          <td class="profile-photo-cell">
+                            <img class="profile-photo" src="./images/face_2024.png" alt="Portrait of Tatsuki Kuribayashi" title="Profile photo">
                           </td>
-                          <td style="width: 60%; display: inline-block">
+                          <td class="profile-details-cell">
                             <ul>
-                              <li>I started Assistant Professor at <a href="https://mbzuai.ac.ae/research/department/natural-language-processing-department/">MBZUAI</a> in August 2025. </li>
-                              <li>I was a postdoc in MBZUAI (advisor: Prof. Timothy Baldwin). Before joining MBZUAI, I completed my Ph.D. at <a href="https://www.nlp.ecei.tohoku.ac.jp/">Tohoku University</a> (supervisor: Prof. Kentaro Inui).</li>
+                              <li>I joined <a href="https://mbzuai.ac.ae/research/department/natural-language-processing-department/">MBZUAI</a> as an Assistant Professor in August 2025.</li>
+                              <li>Previously, I was a postdoctoral associate at MBZUAI, advised by Prof. Timothy Baldwin. I received my Ph.D. from <a href="https://www.nlp.ecei.tohoku.ac.jp/">Tohoku University</a>, where I was advised by Prof. Kentaro Inui.</li>
                               <li>Email: Tatsuki.Kuribayashi at mbzuai.ac.ae</li>
-                              <li><a href="https://scholar.google.co.jp/citations?user=-bqmkaAAAAAJ&hl=ja">Google Scholar</a></li>
-                              <li><a href="https://twitter.com/ttk_kuribayashi?lang=en">Twitter</a></li>
-                              <li><a href="https://github.com/kuribayashi4">Github</a></li>
+                              <li class="profile-social-links">
+                                <a class="profile-icon-link scholar" href="https://scholar.google.co.jp/citations?user=-bqmkaAAAAAJ&amp;hl=ja" aria-label="Google Scholar" title="Google Scholar">
+                                  <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0-24L0 9.5l4.84 3.87A8 8 0 0 1 12 9a8 8 0 0 1 7.16 4.37L24 9.5z"/></svg>
+                                </a>
+                                <a class="profile-icon-link twitter" href="https://twitter.com/ttk_kuribayashi?lang=en" aria-label="Twitter" title="Twitter">
+                                  <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723 10.1 10.1 0 0 1-3.127 1.184A4.92 4.92 0 0 0 11.78 8.29 13.98 13.98 0 0 1 1.64 3.15a4.92 4.92 0 0 0 1.523 6.574 4.9 4.9 0 0 1-2.23-.616v.06a4.92 4.92 0 0 0 3.95 4.827 4.96 4.96 0 0 1-2.224.084 4.93 4.93 0 0 0 4.6 3.42A9.88 9.88 0 0 1 0 19.54 13.94 13.94 0 0 0 7.548 21.75c9.057 0 14.01-7.503 14.01-14.01 0-.21 0-.42-.015-.63a10 10 0 0 0 2.41-2.54z"/></svg>
+                                </a>
+                                <a class="profile-icon-link github" href="https://github.com/kuribayashi4" aria-label="GitHub" title="GitHub">
+                                  <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .297z"/></svg>
+                                </a>
+                              </li>
                               <li><a href="https://docs.google.com/document/d/1EyIgvUHRHemEshNcW6z2uZyPTyh5bzS_UJl_HnN1U7Q/edit?usp=sharing">CV</a></li>
                             </ul>
                           </td>
@@ -94,57 +206,115 @@
                       </table>
                     <h2>News</h2>
                     <div class="highlight-news" style="width: 70%;">
-                    <p>I've started to lead the <a href="https://palm-mbzuai.github.io/">Processing and Acquisition of Language in Machines and Mind (PALM)</a> 🌴 group in MBZUAI. </p>
-                    </p>    
+                    <p>I lead the <a href="https://palm-mbzuai.github.io/">Processing and Acquisition of Language in Machines and Mind (PALM)</a> 🌴 group at MBZUAI.</p>
                     </div>
-                    <ul>
-                    <li>2026/05: CMCL 2026 will be colocated with LREC 2026, Palma.</li>
-                    <li>2025/12: I visited and gave a talk at <a href="https://alexwarstadt.github.io/">LeM🍋N Lab</a> at UCSD [<a href="pdfs/20251201_alex.pdf">slides</a>].</li>
-                    <li>2025/09: I'll give an invited talk at Evidence-based Linguistics Workshop 2025, NINJAL, Japan. "言語モデルは言語学に何のエビデンスも与えないのでしょうか？"[<a href="pdfs/20250915_ninjal.pdf">資料</a>]</li>
-                    <li>2025/05: CMCL 2025 has been held in NAACL 2025, New Mexico. [<a href="https://cmclorg.github.io/">web</a>]<br>
-                    </li>
-                    <li>2024/08: CMCL 2024 has been held in ACL 2024, Bangkok. [<a href="https://aclanthology.org/volumes/2024.cmcl-1/">proceedings</a>]
-                    <li>2024/05: I gave a talk at ETH Zürich [<a href="https://speakerdeck.com/kuribayashi4/from-cognitive-modeling-to-typological-universals-investigations-with-large-language-models">slides</a>], and at The Hong Kong Polytechnic University (online) [<a href="https://speakerdeck.com/kuribayashi4/cognitive-im-plausibility-of-large-language-models">slides</a>]</li>
-                    <li>2023/04: I joined MBZUAI as a postdoctoral research fellow (advisor: <a href="https://eltimster.github.io/www/">Prof. Timothy Baldwin</a>).</li></li>
-                    </ul>
                     <h2>Publications</h2>
-                    <h3>Refereed papers</h3>
+                    <div class="publication-tabs">
+                    <div class="publication-tab-list" role="tablist" aria-label="Publication lists">
+                        <button class="publication-tab" id="featured-publications-tab" type="button" role="tab"
+                            aria-selected="true" aria-controls="featured-publications">Latest &amp; Selected</button>
+                        <button class="publication-tab" id="all-publications-tab" type="button" role="tab"
+                            aria-selected="false" aria-controls="all-publications" tabindex="-1">All publications</button>
+                        <button class="publication-tab" id="japan-publications-tab" type="button" role="tab"
+                            aria-selected="false" aria-controls="japan-publications" tabindex="-1">Japan</button>
+                    </div>
+                    <section id="featured-publications" role="tabpanel" aria-labelledby="featured-publications-tab">
+                    <h3>Latest Publications</h3>
+                    <ul class="compact-publications">
+                        <li>Ryo Yoshida, Shinnosuke Isono, Taiga Someya, Yohei Oseki, <u>Tatsuki Kuribayashi</u>.<br>
+                            "An Existence Proof for Neural Language Models That Can Explain Garden-Path Effects via Surprisal." ACL 2026, pp. 36556-36569, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.1694/">paper</a> | <a href="https://arxiv.org/abs/2604.18293">arXiv</a>]
+                        </li>
+                        <li>Ruoxi Ning, Yongpeng Zhu, Qingcheng Zeng, <u>Tatsuki Kuribayashi</u>, Freda Shi.<br>
+                            "On the Effect of Hyperparameters in Language Modeling for Computational Linguistics." ACL 2026, pp. 41863-41880, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.1939/">paper</a>]
+                        </li>
+                        <li><u>Tatsuki Kuribayashi</u>, Alex Warstadt, Yohei Oseki, Ethan Gotlieb Wilcox.<br>
+                            "Dual Alignment Between Language Model Layers and Human Sentence Processing." ACL 2026, pp. 46207-46223, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.2143/">paper</a> | <a href="https://arxiv.org/abs/2604.18563">arXiv</a>]
+                        </li>
+                        <li>Saeed Almheiri, Bilal Elbouardi, et al., <u>Tatsuki Kuribayashi</u>, et al.<br>
+                            "Multilingual Idioms in Sentences and Conversations Across High-, Medium-, and Low-Resource Languages." ACL 2026, pp. 12363-12389, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.564/">paper</a>]
+                        </li>
+                    </ul>
+
+                    <h3>Selected Publications</h3>
+                    <ul class="compact-publications">
+                        <li><u>Tatsuki Kuribayashi</u>, Alex Warstadt, Yohei Oseki, Ethan Gotlieb Wilcox.<br>
+                            "Dual Alignment Between Language Model Layers and Human Sentence Processing." ACL 2026, pp. 46207-46223, 2026/07.
+                            [<a href="https://aclanthology.org/2026.acl-long.2143/">paper</a>]
+                        </li>
+                        <li>Tianyang Xu, <u>Tatsuki Kuribayashi</u>, Yohei Oseki, Ryan Cotterell, Alex Warstadt.<br>
+                        "Can Language Models Learn Typologically Implausible Languages?"<br>
+                        Transactions of the Association for Computational Linguistics (TACL), 14: pp. 588-611, 2026.
+                        [<a href="https://aclanthology.org/2026.tacl-1.27/">paper</a>]
+                        </li>
+                        <li><u>Tatsuki Kuribayashi</u>, Yohei Oseki, Souhaib Ben Taieb, Kentaro Inui, Timothy Baldwin.<br>
+                            "Large Language Models Are Human-Like Internally." TACL, 13: pp. 1743-1766, 2025/12.
+                            [<a href="https://direct.mit.edu/tacl/article/doi/10.1162/TACL.a.58/134311/Large-Language-Models-Are-Human-Like-Internally">paper</a>]
+                        </li>
+                        <li>*Nadine El-Naggar, *<u>Tatsuki Kuribayashi</u>, Ted Briscoe. (* equal contribution)<br>
+                            "Which Word Orders Facilitate Length Generalization in LMs? An Investigation with GCG-Based Artificial Languages." EMNLP 2025, pp. 35599-35613, 2025/11.
+                            [<a href="https://aclanthology.org/2025.emnlp-main.1803/">paper</a>]
+                        </li>
+                        <li><u>Tatsuki Kuribayashi</u>, Ryo Ueda, Ryo Yoshida, Yohei Oseki, Ted Briscoe, Timothy Baldwin.<br>
+                            "Emergent Word Order Universals from Cognitively-Motivated Language Models." ACL 2024, pp. 14522-14543, 2024/08.
+                            [<a href="https://aclanthology.org/2024.acl-long.781/">paper</a>]
+                        </li>
+                        <li><u>Tatsuki Kuribayashi</u>, Yohei Oseki, Ana Brassard, Kentaro Inui.<br>
+                            "Context Limitations Make Neural Language Models More Human-Like." EMNLP 2022, pp. 10421-10436, 2022/12.
+                            [<a href="https://aclanthology.org/2022.emnlp-main.712/">paper</a>]
+                        </li>
+                        <li><u>Tatsuki Kuribayashi</u>, Yohei Oseki, Takumi Ito, Ryo Yoshida, Masayuki Asahara, Kentaro Inui.<br>
+                            "Lower Perplexity is Not Always Human-Like." ACL 2021, pp. 5203-5217, 2021/08.
+                            [<a href="https://aclanthology.org/2021.acl-long.405/">paper</a>]
+                        </li>
+                        <li>*Takumi Ito, *<u>Tatsuki Kuribayashi</u>, *Masatoshi Hidaka, Jun Suzuki, Kentaro Inui. (* equal contribution)<br>
+                            "Langsmith: An Interactive Academic Text Revision System." EMNLP 2020 System Demonstrations, pp. 216-226, 2020/11.
+                            [<a href="https://aclanthology.org/2020.emnlp-demos.28/">paper</a>]
+                        </li>
+                    </ul>
+                    </section>
+
+                    <section id="all-publications" role="tabpanel" aria-labelledby="all-publications-tab" hidden>
+                    <h3>Peer-Reviewed Publications</h3>
                     <ul>
                         <li> Ryo Yoshida, Shinnosuke Isono, Taiga Someya, Yohei Oseki, <u>Tatsuki Kuribayashi</u>. <br>
                             "An Existence Proof for Neural Language Models That Can Explain Garden-Path Effects via Surprisal." <br>
-                        In Proceedings of The 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), 2026/07.<br>
-                        [<a href="https://arxiv.org/abs/2604.18293">arXiv</a>]
+                        In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), pp. 36556-36569, 2026/07.<br>
+                        [<a href="https://aclanthology.org/2026.acl-long.1694/">paper</a> | <a href="https://arxiv.org/abs/2604.18293">arXiv</a>]
                         </li>
                         <li>
                             Ruoxi Ning, Yongpeng Zhu, Qingcheng Zeng, <u>Tatsuki Kuribayashi</u>, Freda Shi.<br>
                             "On the Effect of Hyperparameters in Language Modeling for Computational Linguistics."<br>
-                            In Proceedings of The 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), 2026/07.<br>
-                            [paper]
+                            In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), pp. 41863-41880, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.1939/">paper</a>]
                         </li>
                         <li><u>Tatsuki Kuribayashi</u>, Alex Warstadt, Yohei Oseki, Ethan Gotlieb Wilcox.<br>
                             "Dual Alignment Between Language Model Layers and Human Sentence Processing."<br>
-                            In Proceedings of The 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), 2026/07.<br>
-                            [<a href="https://arxiv.org/abs/2604.18563">arXiv</a>]
+                            In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), pp. 46207-46223, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.2143/">paper</a> | <a href="https://arxiv.org/abs/2604.18563">arXiv</a>]
                         </li>
                         <li>Saeed Almheiri, Bilal Elbouardi, Salsabila Zahirah Pranida, Irina Nikishina, Ashwath Rao B, Parameswari Krishnamurthy, Muhammad Cendekia Airlangga, Rifo Ahmad Genadi, Nguyễn Phan Gia Bảo, Amir Hossein Yari, Hawau Olamide Toyin, Nurdaulet Mukhituly, Mena Attia, Besher Hassan, Ahmad Fathan Hidayatullah, <u>Tatsuki Kuribayashi</u>, Haonan Li, Suma Bhat, Fajri Koto<br>
                             "Multilingual Idioms in Sentences and Conversations Across High-, Medium-, and Low-Resource Languages."<br>
-                            In Proceedings of The 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), 2026/07.<br>
-                            [paper]
+                            In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026 main long), pp. 12363-12389, 2026/07.<br>
+                            [<a href="https://aclanthology.org/2026.acl-long.564/">paper</a>]
                         </li>
                         <li>Nadine El-Naggar, <u>Tatsuki Kuribayashi</u>, Ted Briscoe.<br>
                             "What Kind of Language is Easy to Language-Model Under Curriculum Learning?"<br>
-                            In Proceedings of The 15th edition of the Workshop on Cognitive Modeling and Computational Linguistic (CMCL 2026), 2026/05.<br>
+                            In Proceedings of the 15th edition of the Workshop on Cognitive Modeling and Computational Linguistics (CMCL 2026), 2026/05.<br>
                             [paper]
                         </li>
                         <li>Tianyang Xu, <u>Tatsuki Kuribayashi</u>, Yohei Oseki, Ryan Cotterell, Alex Warstadt.<br>
                         "Can Language Models Learn Typologically Implausible Languages?"<br>
-                        Transactions of the Association for Computational Linguistics (TACL).<br>
-                        [<a href="https://arxiv.org/abs/2502.12317">arXiv</a>]
+                        Transactions of the Association for Computational Linguistics (TACL), 14: pp. 588-611, 2026.<br>
+                        [<a href="https://aclanthology.org/2026.tacl-1.27/">paper</a> | <a href="https://arxiv.org/abs/2502.12317">arXiv</a>]
                         </li>
                             <li>
                             Keito Kudo, Yoichi Aoki, <u>Tatsuki Kuribayashi</u>, Shusaku Sone, Masaya Taniguchi, Ana Brassard, Keisuke Sakaguchi, Kentaro Inui.<br>
                             "LLMs Faithfully and Iteratively Compute Answers During CoT: A Systematic Analysis With Multi-step Arithmetics."<br>
-                            Findings of 19th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2026, Findings long), 2026/03.<br>
+                            Findings of 19th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2026, Findings long), pp. 1114-1153, 2026/03.<br>
                             [<a href="https://aclanthology.org/2026.findings-eacl.59/">paper</a>]
                             <ul>
                                 <li>Keito Kudo, Yoichi Aoki, <u>Tatsuki Kuribayashi</u>, Shusaku Sone, Masaya Taniguchi, Ana Brassard, Keisuke Sakaguchi, Kentaro Inui.<br>
@@ -154,7 +324,7 @@
                         </li>
                         <li>Mengyu Ye, Jun Suzuki, Tatsuro Inaba, <u>Tatsuki Kuribayashi</u>.<br>
                         "Transformer Key-Value Memories Are Nearly as Interpretable as Sparse Autoencoders."<br>
-                        In Proceedings of The Thirty-Ninth Annual Conference on Neural Information Processing Systems (NeurIPS 2025), 2025/12.<br>
+                        In Proceedings of the Thirty-Ninth Annual Conference on Neural Information Processing Systems (NeurIPS 2025), 2025/12.<br>
                         [<a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/120144">poster</a> | <a href="https://arxiv.org/abs/2510.22332">arXiv</a>]
                         </li>
                         <li><u>Tatsuki Kuribayashi</u>, Yohei Oseki, Souhaib Ben Taieb, Kentaro Inui, Timothy Baldwin.<br>
@@ -164,17 +334,17 @@
                         </li>
                         <li>*Nadine El-Naggar, *<u>Tatsuki Kuribayashi</u>, Ted Briscoe.<br>
                             "Which Word Orders Facilitate Length Generalization in LMs? An Investigation with GCG-Based Artificial Languages."<br>
-                            In Proceedings of The 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025, main long), pp.35599-35613, 2025/11.<br>
+                            In Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025, main long), pp.35599-35613, 2025/11.<br>
                             [<a href="https://aclanthology.org/2025.emnlp-main.1803/">paper</a> | <a href="https://arxiv.org/abs/2510.12722">arXiv</a>]
                         </li>
                         <li>Nadine El-Naggar, <u>Tatsuki Kuribayashi</u>, Ted Briscoe.<br>
                             "GCG-Based Artificial Languages for Evaluating Inductive Biases of Neural Language Models."<br>
-                            In Proceedings of Conference on Computational Natural Language Learning (CoNLL 2025), pp.540-556, 2025/08.<br>
+                            In Proceedings of the Conference on Computational Natural Language Learning (CoNLL 2025), pp.540-556, 2025/08.<br>
                             [<a href="https://aclanthology.org/2025.conll-1.35/">paper</a>]
                         </li>
                         <li>Rena Wei Gao, Xuetong Wu, <u>Tatsuki Kuribayashi</u>, Mingrui Ye, Siya Qi, Carsten Roever, Yuanxing Liu, Zheng Yuan, Jey Han Lau.<br>
                             "Can LLMs Simulate L2-English Dialogue? An Information-Theoretic Analysis of L1-Dependent Biases."<br>
-                            In Proceedings of The 63rd Annual Meeting of the Association for Computational Linguistics (ACL 2025, main long), pp. 4355-4379,  2025/08.<br>
+                            In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL 2025, main long), pp. 4355-4379,  2025/08.<br>
                         [<a href="https://aclanthology.org/2025.acl-long.219/">paper</a> | <a href="https://arxiv.org/abs/2502.14507">arXiv</a>]</li>
                         <li>Mengyu Ye, <u>Tatsuki Kuribayashi</u>, Goro Kobayashi, Jun Suzuki. <br>
                             "Can Input Attributions Explain Inductive Reasoning in In-Context Learning?"<br>
@@ -193,12 +363,12 @@
                         </li>
                         <li><u>Tatsuki Kuribayashi</u>, Timothy Baldwin.<br>
                             "Does Vision Accelerate Hierarchical Generalization of Neural Language Learners?" <br>
-                            In Proceedings of The 31st International Conference on Computational Linguistics (COLING 2025, long), pp.1865-1879, 2025/01.<br>
+                            In Proceedings of the 31st International Conference on Computational Linguistics (COLING 2025, long), pp.1865-1879, 2025/01.<br>
                             [<a href="https://aclanthology.org/2025.coling-main.127/">paper</a> | <a href="https://arxiv.org/abs/2302.00667">arXiv</a>]</li>
                         <li>
                             David Romero, Chenyang Lyu, Haryo Akbarianto Wibowo,...,<u>Tatsuki Kuribayashi</u>,...,Thamar Solorio, Alham Fikri Aji.<br>
                             "CVQA: Culturally-diverse Multilingual Visual Question Answering Benchmark."<br>
-                            In Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks (NeurIPS 2024 Datasets and Benchmarks Track),  2024/12.</br>
+                            In Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks (NeurIPS 2024 Datasets and Benchmarks Track), 2024/12.<br>
                             [<a href="https://neurips.cc/virtual/2024/poster/97798">paper</a> | <a href="https://arxiv.org/abs/2406.05967">arXiv</a>]
                         </li>
                         <li>
@@ -237,13 +407,14 @@
                         <ul>
                             <li>Mengyu Ye, <u>Tatsuki Kuribayashi</u>, Jun Suzuki, Hiroaki Funayama and Goro Kobayashi.<br>
                             "Assessing Chain-of-Thought Reasoning against Lexical Negation: A Case Study on Syllogism."<br>
-                            In Proceedings of Student Research Workshop (SRW) at the 61st Annual Meeting of the Association for Computational Linguistics 2023 (ACL-SRW, Non-archival, <b>best paper award</b>), 2023/07.<br>
+                            In Proceedings of the Student Research Workshop (SRW) at the 61st Annual Meeting of the Association for Computational Linguistics 2023 (ACL-SRW, Non-archival), 2023/07.
+                            <span class="award-badge">👑 <a href="https://2023.aclweb.org/program/best_papers/">Best Paper Award</a></span><br>
                         </ul>
                         </li>
                         <li>
                             Takumi Ito, Naomi Yamashita, <u>Tatsuki Kuribayashi</u>, Masatoshi Hidaka, Jun Suzuki, Ge Gao, Jack Jamieson and Kentaro Inui.<br>
                             "Use of an AI-powered Rewriting Support Software in Context with Other Tools: A Study of Non-Native English Speakers."<br>
-                            The ACM Symposium on User Interface Software and Technology 2023 (UIST 2023), 2023/10.<br>
+                            The ACM Symposium on User Interface Software and Technology 2023 (UIST 2023), Article 45, pp. 1-13, 2023/10.<br>
                             [<a href="https://dl.acm.org/doi/abs/10.1145/3586183.3606810">paper</a>]
                         </li>
                         <li>Miyu Oba, <u>Tatsuki Kuribayashi</u>, Hiroki Ouchi, Taro Watanabe. <br>
@@ -269,7 +440,8 @@
                         <ul>
                             <li>Yoichi Aoki, Keito Kudo, <u>Tatsuki Kuribayashi</u>, Ana Brassard, Masashi Yoshikawa, Keisuke Sakaguchi and Kentaro Inui. <br>
                                 "Empirical Investigation of Neural Symbolic Reasoning Strategies." <br>
-                                Non-archival submission for the 2022 AACL-IJCNLP Student Research Workshop (AACL-IJCNLP SRW Non-archival, <b>best paper award</b>), 2022/11.</li>
+                                Non-archival submission for the 2022 AACL-IJCNLP Student Research Workshop (AACL-IJCNLP SRW Non-archival), 2022/11.
+                                <span class="award-badge">👑 <a href="https://aacl2022-srw.github.io/program">Best Paper Award</a></span></li>
                         </ul>
                         <li><u>Tatsuki Kuribayashi</u>, Yohei Oseki, Ana Brassard, Kentaro Inui.<br>
                             "Context Limitations Make Neural Language Models More Human-Like."<br>
@@ -285,7 +457,7 @@
                         <ul>
                             <li>Riki Fujihara, <u>Tatsuki Kuribayashi</u>, Kaori Abe, Kentaro Inui.<br>
                                 "Topicalization in Language Models: A Case Study on Japanese."<br>
-                                In proceedings of Student Research Workshop at the Joint Conference of the 59th Annual
+                                In Proceedings of the Student Research Workshop at the Joint Conference of the 59th Annual
                                 Meeting of the Association for Computational Linguistics and the 11th International Joint
                                 Conference on Natural Language Processing (ACL-IJCNLP-2021 SRW Non-archival), 2021/08
                                 (acceptance rate: 39%).<br>
@@ -293,18 +465,18 @@
                         </ul>
                         <li>Goro Kobayashi, <u>Tatsuki Kuribayashi</u>, Sho Yokoi, Kentaro Inui.<br>
                             "Incorporating Residual and Normalization Layers into Analysis of Masked Language
-                            Models."<br> In proceedings of the 2021 Conference on Empirical Methods in Natural Language
+                            Models."<br> In Proceedings of the 2021 Conference on Empirical Methods in Natural Language
                             Processing (EMNLP 2021, main long), pp.  4547-4568, 2021/11 (acceptance rate: 23.3%).<br>
                             [<a href="https://aclanthology.org/2021.emnlp-main.373/">paper</a> | <a href="https://arxiv.org/abs/2109.07152">arXiv</a> | code]
                         </li>
                         <li>Hiroki Ouchi, Jun Suzuki, Sosuke Kobayashi, Sho Yokoi, <u>Tatsuki Kuribayashi</u>, Masashi Yoshikawa, Kentaro Inui.<br>
-                            "Instance-Based Neural Dependency Parsing."<br> Transactions of the Association for Computational Linguistics 2021 (TACL 2021), 2021/09.<br>
+                            "Instance-Based Neural Dependency Parsing."<br> Transactions of the Association for Computational Linguistics 2021 (TACL 2021), 9: pp. 1493-1507, 2021/09.<br>
                             [<a href="https://aclanthology.org/2021.tacl-1.89/">paper</a> | <a href="https://arxiv.org/abs/2109.13497">arXiv</a>]
                         </li>
                         <li><u>Tatsuki Kuribayashi</u>, Yohei Oseki, Takumi Ito, Ryo Yoshida, Masayuki Asahara,
                             Kentaro Inui.<br>
                             "Lower Perplexity is Not Always Human-Like."<br>
-                            In proceedings of the Joint Conference of the 59th Annual Meeting of the Association for
+                            In Proceedings of the Joint Conference of the 59th Annual Meeting of the Association for
                             Computational Linguistics and the 11th International Joint Conference on Natural Language
                             Processing (ACL-IJCNLP 2021, main long), pp.  5203-5217, 2021/08 (acceptance rate: 21.3%).<br>
                             [<a href="https://aclanthology.org/2021.acl-long.405/">paper</a> | <a
@@ -313,20 +485,21 @@
                         <li><u>栗林樹生</u>, 大内啓樹, 井之上直也, 鈴木潤, Paul Reisert, 三好利昇, 乾健太郎<br>
                             「論述構造解析におけるスパン分散表現」<br>
                             自然言語処理 (domestic journal), Volume 27, Number 4, pp. 753-780, 2020/12.<br>
+                            <span class="award-badge">👑 <a href="https://www.anlp.jp/award/ronbun.html">Best Paper Award 2020, Association for Natural Language Processing</a></span><br>
                             [<a href="https://www.jstage.jst.go.jp/article/jnlp/27/4/27_753/_article/-char/ja/">paper</a> |
                             <a href="./pdfs/20210308_Argmining_kuribayashi_public.pdf">slides</a>]
                         </li>
                         <li>Takaki Otake, Sho Yokoi, Naoya Inoue, Ryo Takahashi, <u>Tatsuki Kuribayashi</u>, Kentaro
                             Inui.<br>
                             "Modeling Event Salience in a Narrative Based on Barthes' Cardinal Function."<br>
-                            In proceedings of the 28th International Conference on Computational Linguistics
+                            In Proceedings of the 28th International Conference on Computational Linguistics
                             (COLING-2020, short), pp.  1784-1794, 2020/12 (acceptance rate: 26.2%).<br>
                             [<a href="https://www.aclweb.org/anthology/2020.coling-main.160/">paper</a> | <a
                                 href="https://arxiv.org/abs/2011.01785">arXiv</a>]
                         </li>
                         <li>Goro Kobayashi, <u>Tatsuki Kuribayashi</u>, Sho Yokoi, Kentaro Inui.<br>
                             "Attention is Not Only a Weight: Analyzing Transformers with Vector Norms."<br>
-                            In proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing
+                            In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing
                             (EMNLP-2020, main long), pp.  7057-7075, 2020/11 (acceptance rate: 754/3359=22.4%).<br>
                             [<a href="https://www.aclweb.org/anthology/2020.emnlp-main.574/">paper</a> | <a
                                 href="https://arxiv.org/abs/2004.10102">arXiv</a> | <a
@@ -335,7 +508,7 @@
                         <ul>
                             <li>Goro Kobayashi, <u>Tatsuki Kuribayashi</u>, Sho Yokoi, Kentaro Inui.<br>
                                 "Self-Attention is Not Only a Weight: Analyzing BERT with Vector Norms."<br>
-                                In proceedings of Student Research Workshop at the 58th Annual Meeting of the Association
+                                In Proceedings of the Student Research Workshop at the 58th Annual Meeting of the Association
                                 for Computational Linguistics (ACL-SRW-2020 Non-archival), 2020/07 (acceptance rate:
                                 72/202=35.6%).<br>
                             </li>
@@ -343,7 +516,7 @@
                         <li>*Takumi Ito, *<u>Tatsuki Kuribayashi</u>, *Masatoshi Hidaka, Jun Suzuki, Kentaro Inui. (*
                             equal contribution)<br>
                             "Langsmith: An Interactive Academic Text Revision System."<br>
-                            In proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing
+                            In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing
                             (EMNLP-2020, demo), pp.  216-226, 2020/11 (acceptance
                             rate: ???%).<br>
                             [<a href="https://www.aclweb.org/anthology/2020.emnlp-demos.28/">paper</a> | <a
@@ -358,7 +531,7 @@
                         <li><u>Tatsuki Kuribayashi</u>, Takumi Ito, Jun Suzuki, Kentaro Inui.<br>
                             "Language Models as an Alternative Evaluator of Word Order Hypotheses: A Case Study in
                             Japanese."<br>
-                            In proceedings of the 58th annual meeting of the Association for Computational Linguistics
+                            In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics
                             (ACL-2020, main long), pp.  6452-6459, 2020/07 (acceptance rate: 779/3429=22.7%).<br>
                             [<a href="https://www.aclweb.org/anthology/2020.acl-main.47/">paper</a> | <a
                                 href="./pdfs/revised_20211223.pdf">updated version</a> | <a
@@ -369,7 +542,7 @@
                             Konno, Kentaro Inui.<br>
                             "Instance-Based Learning of Span Representations: A Case Study through Named Entity
                             Recognition."<br>
-                            In proceedings of the 58th annual meeting of the Association for Computational Linguistics
+                            In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics
                             (ACL-2020, Short), pp.  6452-6459, 2020/07 (acceptance rate: 208/1185=17.6%).<br>
                             [<a href="https://www.aclweb.org/anthology/2020.acl-main.575/">paper</a> | <a
                                 href="https://arxiv.org/abs/2004.14514">arXiv</a>]
@@ -419,87 +592,207 @@
                             [<a href="https://arxiv.org/abs/2502.11932">arXiv</a>]
                         </li>
                     </ul>
-                    <h2>Awards</h2>
+                    </section>
+                    <section id="japan-publications" role="tabpanel" aria-labelledby="japan-publications-tab" hidden>
+                    <h3 id="japan-domestic">Domestic Conference Papers and Articles</h3>
                     <ul>
-                        <li>2024/03: <a href="https://www.anlp.jp/nlp2024/award.html">Outstanding Paper Award, NLP2024, Japan. 言語処理学会第30回年次大会, 優秀賞</a>. どのような言語モデルが不可能な言語を学習してしまうのか？―語順普遍を例に―</li>
-                        <li>2024/03: <a href="https://www.anlp.jp/nlp2024/award.html">Special Committee Award, NLP2024, Japan. 言語処理学会第30回年次大会, 委員特別賞</a>. 長距離相互作用する文脈依存言語における相転移現象 ―言語モデルの創発現象を統計力学の視点で理解する―</li>
-                        <li>2023/07: <a href="https://2023.aclweb.org/program/best_papers/">ACL-SRW Best Paper Award</a>. Assessing Chain-of-Thought Reasoning against Lexical Negation: A Case Study on Syllogism.</li>
-                        <li>2023/03: <a href="https://www.anlp.jp/nlp2023/award.html">Special Committee Award, NLP2023, Japan. 言語処理学会第29回年次大会, 委員特別賞</a>. 百聞は一見に如かず？視覚情報は言語モデルに文の階層構造を教示するか.</li>
-                        <li>2023/03: <a href="https://www.anlp.jp/nlp2023/award.html">Special Committee Award, NLP2023, Japan. 言語処理学会第29回年次大会, 委員特別賞</a>. 日本語話者の項省略判断に関するアノテーションとモデリング.</li>
-                        <li>2022/12: <a href="https://nl-ipsj.or.jp/award/">Excellent Research Award, 第254回 NL研, Japan.</a>. 言語モデルの第二言語獲得効率.</li>
-                        <li>2022/11: <a href="https://aacl2022-srw.github.io/program">AACL-SRW Best Paper Award</a>. Empirical Investigation of Neural Symbolic Reasoning Strategies.</li>
-                        <li>2022/08: <a href="https://yans.anlp.jp/entry/yans2022report">Encouragement Awards (奨励賞), YANS2022, Japan.</a> 視覚情報は言語モデルに人間らしい統語的汎化を促すか.</li>
-                        <li>2022/03: President's Award, Graduate School of Information Sciences, Tohoku University. (東北大学総長賞)</li>
-                        <li>2022/04: <a href="https://note.com/ipsj/n/nefc2ae945988">2021年度研究会推薦博士論文</a>. Exploring Cognitive Plausibility of Neural NLP Models: Cross-Linguistic and Discourse-Level Studies.</li>
-                        <li>2022/03: Excellent
-                            Student in Electrical and Information Science Award, Tohoku University. (東北大学電気・情報系優秀学生賞)</li>
-                        <li>2022/03: <a href="https://www.anlp.jp/nlp2022/award.html">Special Committee Award, NLP2022, Japan. (言語処理学会第28回年次大会, 委員特別賞) </a>Transformerにおけるフィードフォワードネットの作用</li>
-                        <li>2021/03: <a href="https://www.anlp.jp/award/ronbun.html">Best Paper Award 2020, Association for Natural Language
-                                Processing (domestic journal). (言語処理学会2020年度最優秀論文賞) (1/28=3.5%)</a>
-                            論述構造解析におけるスパン分散表現</li>
-                        <li>2021/03: <a href="https://www.anlp.jp/nlp2021/">Special Committee Award, NLP2021
-                                (domestic conference). (言語処理学会第27回年次大会, 委員特別賞) (14/361=3.8%)</a>
-                            予測の正確な言語モデルがヒトらしいとは限らない</li>
-                        <li>2020/03: <a href="https://www.nlp.ecei.tohoku.ac.jp/news-release/3571/">Excellent
-                                Student in Electrical and Information Science Award, Tohoku University. (東北大学電気・情報系優秀学生賞) </a></li>
-                        <li>2020/03: <a href="https://www.anlp.jp/award/nenji.html">Best Paper Award, NLP2020
-                                (domestic conference) (言語処理学会年次大会最優秀賞) (2/396=0.5%)</a> ベクトル⻑に基づく自己注意機構の解析. </li>
-                        <li>2019/03: <a href="https://www.anlp.jp/award/nenji.html#y2019">Young Researcher Award, 
-                                NLP2019 (domestic conference). (言語処理学会年次大会若手奨励賞) (11/274=4.0%)</a>
-                            言語モデルを用いた日本語の語順評価と基本語順の分析.</li>
-                        <li>2018/03: <a href="http://www.ecei.tohoku.ac.jp/eipe/intro/news/commendation.html">Excellent
-                                Academic Award, School of Engineering, Tohoku University. (東北大学工学部長賞) (26/910=2.9%)</a>
+                        <li><u>栗林 樹生</u>, 大関 洋平, Souhaib Ben Taieb, 乾 健太郎, Timothy Baldwin. 大規模言語モデルの浅い層が人間の速い言語処理を再現する. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
+                        <li>上田 亮, <u>栗林 樹生</u>, 神藤 駿介, 乾 健太郎. RNNの回帰行列を凍結しても統語構造の獲得は損なわれない. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
+                        <li>木迫 璃玖, <u>栗林 樹生</u>, 笹野 遼平. 大規模言語モデル内部における言語と計算領域の区分. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
+                        <li><u>栗林樹生</u>, 大関洋平, Timothy Baldwin. 大規模言語モデルの文処理は人間らしいのか？. 言語処理学会第30回年次大会,4pages,2024/3.</li>
+                        <li><u>栗林樹生</u>, 上田亮, 吉田遼, 大関洋平, Ted Briscoe, Timothy Baldwin. どのような言語モデルが不可能な言語を学習してしまうのか？---語順普遍を例に---. 言語処理学会第30回年次大会, 4pages, 2024/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2024/award.html">優秀賞</a></span></li>
+                        <li>青木洋一, 工藤慧音, 曾根周作, <u>栗林樹生</u>, 谷口雅弥, 坂口慶祐, 乾健太郎. 言語モデルの思考連鎖的推論における探索戦略の動的変化. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
+                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, 谷口雅弥, 曾根周作, 坂口慶祐, 乾健太郎. 算術推論問題における自己回帰型言語モデルの内部機序. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
+                        <li>葉夢宇, <u>栗林樹生</u>, 小林悟郎, 鈴木潤. 文脈内学習における文脈内事例の寄与度推定. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
+                        <li>都地悠馬, 高橋惇, 横井祥, <u>栗林樹生</u>, 上田亮, 宮原英之. 長距離相互作用する文脈依存言語における相転移現象 -言語モデルの創発現象を統計力学の視点で理解する-. 言語処理学会第30回年次大会,4pages,2024/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2024/award.html">委員特別賞</a></span></li>
+                        <li><u>栗林樹生</u>. 百聞は一見に如かず？視覚情報は言語モデルに文の階層構造を教示するか. 言語処理学会第29回年次大会, 4pages, 2023/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2023/award.html">委員特別賞</a></span></li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformer言語モデルの予測ヘッド内バイアスによる頻度補正効果. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
+                        <li>葉夢宇, <u>栗林樹生</u>, 舟山弘晃, 鈴木潤. 思考連鎖指示における大規模言語モデルの否定表現理解. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
+                        <li>藤原吏生, <u>栗林樹生</u>, 徳久良子, 乾健太郎. 主題化における人間と言語モデルの対照. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
+                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 笹野遼平, 乾健太郎. 日本語話者の項省略判断に関するアノテーションとモデリング. 言語処理学会第29回年次大会, 4pages, 2023/3. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2023/award.html">委員特別賞</a></span></li>
+                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
+                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 坂口慶祐, 乾健太郎. 算術問題におけるニューラルモデルの構成的推論能力. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
+                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 坂口慶祐, 乾健太郎. ニューラル記号推論における推論過程の教示方法. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
+                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第254回自然言語処理研究会, 6pages, 2022/11. <span class="award-badge">👑 <a href="https://nl-ipsj.or.jp/award/">優秀研究賞</a></span></li>
+                        <li>青木洋一, 工藤慧音, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 乾健太郎. 推論過程の性質がニューラルネットの多段推論能力に与える影響. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
+                        <li><u>栗林樹生</u>. 視覚情報は言語モデルに人間らしい統語的汎化を促すか. 第17回NLP若手の会 シンポジウム (YANS), 2022/08. <span class="award-badge">👑 <a href="https://yans.anlp.jp/entry/yans2022report">奨励賞</a></span></li>
+                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの混ぜ合わせ作用. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
+                        <li><u>栗林樹生</u>, 大関洋平, Ana Brassard, 乾健太郎. ニューラル言語モデルの過剰な作業記憶. 言語処理学会第28回年次大会, pp.1530-1535, 2022/03.</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの作用. 言語処理学会第28回年次大会, pp.1072-1077, 2022/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2022/award.html">委員特別賞</a></span></li>
+                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平. 情報量に基づく日本語項省略の分析. 言語処理学会第28回年次大会, pp.442-447, 2022/03.</li>
+                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 乾健太郎. 多段の数量推論タスクに対する適応的なモデルの振る舞いの検証. 言語処理学会第28回年次大会, pp.168-172, 2022/03.</li>
+                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平 情報量に基づく日本語項省略の分析. NLP若手の会 (YANS) 第16回シンポジウム,
+                            2021/08.</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. 非線形モジュールの加法分解に基づくTransformerレイヤーの解析. NLP若手の会 (YANS)
+                            第16回シンポジウム, 2021/08.</li>
+                        <li><u>栗林樹生</u>, 大関洋平, 伊藤拓海, 吉田遼, 浅原正幸, 乾健太郎. 予測の正確な言語モデルがヒトらしいとは限らない. 言語処理学会第27回年次大会,
+                            pp.267-272,
+                            2021/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/nlp2021/">委員特別賞</a></span></li>
+                        <li><u>栗林樹生</u>, 大関洋平, 伊藤拓海, 吉田遼, 浅原正幸, 乾健太郎. 日本語の読みやすさに対する情報量に基づいた統一的な解釈. 言語処理学会第27回年次大会,
+                            pp.723-728, 2021/03.</li>
+                        <li>伊藤拓海, <u>栗林樹生</u>, 日高雅俊, 鈴木潤, 乾健太郎. Langsmith: 人とシステムの協働による論文執筆. 言語処理学会第27回年次大会,
+                            pp.1834-1839,
+                            2021/03.</li>
+                        <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 人と言語モデルが捉える文の主題. 言語処理学会第27回年次大会, pp.1307-1312, 2021/03.</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerの文脈を混ぜる作用と混ぜない作用. 言語処理学会第27回年次大会,
+                            pp.1224-1229,
+                            2021/03.</li>
+                        <li>大内啓樹, 鈴木潤, 小林颯介, 横井祥, <u>栗林樹生</u>, 吉川将司,
+                            乾健太郎. 事例ベース依存構造解析のための依存関係表現学習. 言語処理学会第27回年次大会, pp.497-502, 2021/03.</li>
+                        <li>大竹孝樹, 横井祥, 井之上直也, 高橋諒, <u>栗林樹生</u>,
+                            乾健太郎. 物語におけるイベントの顕現性推定と物語類似性計算への応用. 言語処理学会第27回年次大会, pp.1324-1329, 2021/03.</li>
+                        <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 日本語言語モデルが選択する文形式の傾向と文脈の影響 ー 主題化・有標語順について. NLP若手の会 (YANS)
+                            第15回シンポジウム, 2020/09.</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. ベクトル長に基づく注意機構と残差結合の包括的な分析. NLP若手の会 (YANS) 第15回シンポジウム,
+                            2020/09.</li>
+                        <li><u>栗林樹生</u>, 伊藤拓海, 鈴木潤, 乾健太郎. 日本語語順分析に言語モデルを用いることの妥当性について. 言語処理学会第26回年次大会,
+                            pp.493-496,
+                            2020/03.<br>[<a href="./pdfs/nlp2020.pdf">slides</a>]</li>
+                        <li>小林 悟郎, <u>栗林樹生</u>, 横井 祥, 鈴木潤, 乾健太郎. ベクトル⻑に基づく自己注意機構の解析. 言語処理学会第26回年次大会, pp.965-968,
+                            2020/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/award/nenji.html">最優秀賞</a></span></li>
+                        <li>大内 啓樹, 鈴木 潤, 小林 颯介, 横井 祥, <u>栗林樹生</u>, 乾健太郎. スパン間の類似性に基づく事例ベース構造予測. 言語処理学会第26回年次大会,
+                            pp.331-334, 2020/03.</li>
+                        <li>大竹 孝樹, 横井 祥, 井之上 直也, 高橋 諒, <u>栗林樹生</u>, 乾健太郎. 言語モデルによる物語中のイベントの顕現性推定. 言語処理学会第26回年次大会,
+                            pp.1089-1092, 2020/03.</li>
+                        <li>伊藤拓海, <u>栗林樹生</u>, 萩原正人, 鈴木潤, 乾健太郎. 英語論文執筆のための統合ライティング支援環境. 第14回NLP若手の会 シンポジウム (YANS),
+                            2019/08.</li>
+                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 鈴木潤, 乾健太郎. 文脈を考慮する言語モデルが捉える品詞情報とその軌跡. 第14回NLP若手の会 シンポジウム
+                            (YANS), 2019/08.</li>
+                        <li><u>栗林樹生</u>, 大内啓樹, 井之直也, Paul Reisert, 三好利昇, 鈴木潤, 乾健太郎. 
+                            複数の言語単位に対するスパン表現を用いた論述構造解析. 言語処理学会第25回年次大会, pp.990-993, 2019/03.</li>
+                        <li>*<u>栗林樹生</u>, *伊藤拓海, 内山香, 鈴木潤, 乾健太郎. (* 第一著者と第二著者の貢献度は等しい．)
+                             言語モデルを用いた日本語の語順評価と基本語順の分析. 言語処理学会第25回年次大会, pp.1053-1056, 2019/03. <span class="award-badge">👑 <a href="https://www.anlp.jp/award/nenji.html#y2019">若手奨励賞</a></span>
+                        </li>
+                        <li>*伊藤拓海, *<u>栗林樹生</u>, 小林隼人, 鈴木潤, 乾健太郎. (* 第一著者と第二著者の貢献度は等しい．)
+                             ライティング支援を想定した情報補完型生成. 言語処理学会第25回年次大会, pp.970-973, 2019/03.
+                        </li>
+                        <li><u>Tatsuki Kuribayashi</u>, Paul Reisert, Naoya Inoue and Kentaro Inui. Towards
+                            Exploiting Argumentative Context for Argumentative Relation Identification. 
+                            言語処理学会第24回年次大会, pp.284-287, 2018/03.</li>
+                        <li><u>Tatsuki Kuribayashi</u>, Paul Reisert, Naoya Inoue, Kentaro Inui. Examining
+                            Macro-level Argumentative Structure Features for Argumentative Relation Identification.
+                             第4回自然言語処理シンポジウム・第234回自然言語処理研究会, 6pages, 2017/12.
                         </li>
                     </ul>
-                    <h2>Grant</h2>
-                    <ul>
-                        <li>2025/04-2028/03 (suspended from 2023/04 due to overseas affiliation): Grant-in-Aid for Early-Career Scientists, Japan. 科学研究費助成事業若手研究. 「人間らしい言語獲得効率に対するマルチモーダル言語処理を通した構成論的探求」</li>
-                        <li>2020/04-2022/03: Doctoral Course (DC) Research Fellowships, Japan. 日本学術振興会特別研究員(DC1) (面接免除内定, 54/277=19.5%).
-                            「テクストの数理的モデリングと、数理モデルを通したテクストらしさの解明への挑戦」</li>
-                    </ul>
+                    </section>
+                    </div>
 
-                    <h2>Education/affiliation</h2>
-                    <ul> 
-                        <li>2025/08-Present: Assistant Professor, MBZUAI. [<a href="https://mbzuai.ac.ae/study/faculty/tatsuki-kuribayashi/">web</a>]</li>
-                        <li>2025/10-Present: Visiting Researcher, The Graduate School of Information Science and Technology, The University of Tokyo. [<a href="https://mynlp.is.s.u-tokyo.ac.jp/en/members">web</a>]</li>
-                        <li>2025/02-Present: Visiting Researcher, Center for Language AI Research, Tohoku University. [<a href="https://www.nlp.ecei.tohoku.ac.jp/about-us/members/">web</a>]</li>
-                        <li>2024/04-Present: Visiting Scientist, RIKEN.</li>
-                        <li>2023/04-2025/07: Postdoctoral Associate, <a href="https://mbzuai.ac.ae/research/department/natural-language-processing-department/">MBZUAI</a> (Advisor: Prof. <a href="https://people.eng.unimelb.edu.au/tbaldwin/">Timothy Baldwin</a>).
+                    <h2>Education and Appointments</h2>
+                    <ul>
+                        <li>2025/08–Present: Tenure-Track Assistant Professor of Natural Language Processing, Division of Computing and Mathematical Sciences, MBZUAI, UAE. [<a href="https://mbzuai.ac.ae/study/faculty/tatsuki-kuribayashi/">website</a>]</li>
+                        <li>2025/10–Present: Visiting Researcher, Graduate School of Information Science and Technology, The University of Tokyo. [<a href="https://mynlp.is.s.u-tokyo.ac.jp/en/members">website</a>]</li>
+                        <li>2025/02–Present: Visiting Researcher, Center for Language AI Research, Tohoku University. [<a href="https://www.nlp.ecei.tohoku.ac.jp/about-us/members/">website</a>]</li>
+                        <li>2024/04–Present: Visiting Scientist, RIKEN.</li>
+                        <li>2018/05–2023/03: Co-Founder, <a href="https://langsmith.co.jp/">Langsmith Co., Ltd.</a>
                         </li>
-                        <li>2022/04-2023/03: Specially-appointed Research Fellow, <a href="https://www.nlp.ecei.tohoku.ac.jp/">Tohoku NLP Group</a>.
+                        <li>2023/04–2025/07: Postdoctoral Associate, <a href="https://mbzuai.ac.ae/research/department/natural-language-processing-department/">MBZUAI</a> (Advisor: Prof. <a href="https://people.eng.unimelb.edu.au/tbaldwin/">Timothy Baldwin</a>).
                         </li>
-                                                <li>2018/04-2022/03.: Graduate Program in Data Science, Tohoku University.</li>
-                        <li>2022/03: Ph.D., Graduate School of Information Sciences, Tohoku University, Japan  (Supervisor: <a
+                        <li>2022/04–2023/03: Specially Appointed Research Fellow, <a href="https://www.nlp.ecei.tohoku.ac.jp/">Tohoku NLP Group</a>.
+                        </li>
+                        <li>2020/04–2022/03: Ph.D., Graduate School of Information Sciences, Tohoku University, Japan (Supervisor: <a
                                 href="http://www.cl.ecei.tohoku.ac.jp/~inui/">Prof. Kentaro Inui</a>)
                                 [<a href="pdfs/2024_download_PhD_honshinsa_Thesis_Kuribayashi_.pdf">thesis</a>]</li>
-                        <li>2020/03: M.E., Graduate School of Information Sciences, Tohoku University, Japan (Supervisor: <a
+                        <ul>
+                                <li>Doctoral Dissertation Recommended by the Information Processing Society of Japan. [<a href="https://note.com/ipsj/n/nefc2ae945988">link</a>]</li>
+                                <li>President's Award, Graduate School of Information Sciences, Tohoku University. (東北大学総長賞)</li>
+                                <li>Excellent Student in Electrical and Information Science Award, Tohoku University. (東北大学電気・情報系優秀学生賞)</li>
+                        </ul>
+                        <li>2018/04–2020/03: M.E., Graduate School of Information Sciences, Tohoku University, Japan (Supervisor: <a
                                 href="http://www.cl.ecei.tohoku.ac.jp/~inui/">Prof. Kentaro Inui</a>)
                             [<a href="http://www.cl.ecei.tohoku.ac.jp/local/handouts/2019/thesis/thesis-20200401-kuribayashi.pdf">thesis</a>]</li>
-                        <li>2018/03: B.E., Department of Information and Intelligent
+                        <ul>
+                        <li>Excellent Student in Electrical and Information Science Award, Tohoku University. (東北大学電気・情報系優秀学生賞) [<a href="https://www.nlp.ecei.tohoku.ac.jp/news-release/3571/">link</a>]</li>
+                        </ul>
+                        <li>2014/04–2018/03: B.E., Department of Information and Intelligent
                             Systems, Tohoku University, Japan (Supervisor: <a
                                 href="http://www.cl.ecei.tohoku.ac.jp/~inui/">Prof. Kentaro Inui</a>) </li>
-                    </ul>
-                    <h2>Activities/organizer</h2>
-                    <ul>
-                        <li>2024, 2025: <a href="https://cmclorg.github.io/">CMCL Workshop</a> organizer</li>
-                        <li>2018/05-2023/03: <a href="https://langsmith.co.jp/">Langsmith Co., Ltd.</a> (Co-founder).
+                            <ul>
+                            <li>Excellent Academic Award, School of Engineering, Tohoku University. (東北大学工学部長賞; top 2.9%) [<a href="http://www.ecei.tohoku.ac.jp/eipe/intro/news/commendation.html">link</a>]</li>
+
+                            </ul>
                         </li>
-                        <li>2020-2023: <a href="https://sites.google.com/view/snlp-jp">最先端NLP勉強会</a> (2023実行委員長)
-                        </li>
-                        <li>2021-2022: Member of NLP Dの会, 2021-2022.</li>
-                        <li>2019/08: <a href="https://www.uni-goettingen.de/en/data+science/594011.html">3rd Data
-                            Science Summer School in Göttingen</a>.</li>
-                        <li>2017/08: <a href="https://internship.cookpad.com/2017/summer/17day-tech/">Cookpad 17days
-                                Internship</a>.</li>
                     </ul>
-                    <h2>Talks/writings</h2>
+                    <h2>Grants</h2>
                     <ul>
-                        <li>2025/03: Talk at MBZUAI [<a href="pdfs/Talk_slide.pdf">slides</a>]</li>
+                        <li>2026/04–2029/03: Co-Investigator (研究分担者), Grant-in-Aid for Scientific Research (A), JSPS, Japan.<br>
+                            「言語知能における永続的逐次適応機能の基盤理論構築と概念実証」(Principal Investigator: Jun Suzuki)<br>
+                            <em>Building a Foundational Theory and Proof-of-Concept for Persistent Sequential Adaptation in Language Intelligence.</em>
+                        </li>
+                        <li>2025/04–2028/03 (resumed following a suspension beginning in 2023/04): Principal Investigator, Grant-in-Aid for Early-Career Scientists, JSPS, Japan.<br>
+                            「人間らしい言語獲得効率に対するマルチモーダル言語処理を通した構成論的探求」<br>
+                            <em>Constructive Exploration of Human-Like Language Acquisition Through Multimodal Language Processing.</em></li>
+                        <li>2020/04–2022/03: JSPS Research Fellowship for Young Scientists (DC1), Japan (selected without an interview; 54/277 = 19.5%).
+                            <br>「テクストの数理的モデリングと、数理モデルを通したテクストらしさの解明への挑戦」<br>
+                            <em>Understanding Textuality Through Mathematical Modeling of Text.</em></li>
+                    </ul>
+                    <h2>Service</h2>
+                    <div class="publication-tabs service-tabs">
+                    <div class="publication-tab-list" role="tablist" aria-label="Service categories">
+                        <button class="publication-tab" id="international-service-tab" type="button" role="tab"
+                            aria-selected="true" aria-controls="international-service">International</button>
+                        <button class="publication-tab" id="japan-service-tab" type="button" role="tab"
+                            aria-selected="false" aria-controls="japan-service" tabindex="-1">Japan</button>
+                    </div>
+                    <section id="international-service" role="tabpanel" aria-labelledby="international-service-tab">
+                    <h3>Reviewing</h3>
+                        <ul>
+                        <li>Reviewer, Area Chair, and Senior Area Chair for ACL Rolling Review (primarily in Interpretability and Analysis of Models for NLP; Linguistic Theories; Cognitive Modeling; and Psycholinguistics)</li>
+                        <li>Occasional reviewer for TACL and Computational Linguistics</li>
+                        <li>COLM: 2024</li>
+                        <li>COLING: 2020, 2022, 2024, 2025 (Language Modeling; Integrated Systems and Applications)</li>
+                        <li>LREC: 2022, 2024, 2026</li>
+                        <li>INLG: 2020, 2021</li>
+                        <li>CoNLL: 2024, 2025, 2026</li>
+                        <li>BlackboxNLP: 2024</li>
+                    </ul>
+                    <h3>Organizing</h3>
+                    <ul>
+                        <li>Organizer, 15th Workshop on Cognitive Modeling and Computational Linguistics (CMCL 2026)</li>
+                        <li>Organizer, 14th Workshop on Cognitive Modeling and Computational Linguistics (CMCL 2025)</li>
+                        <li>Organizer, 13th Workshop on Cognitive Modeling and Computational Linguistics (CMCL 2024)</li>
+                    </ul>
+                    </section>
+                    <section id="japan-service" role="tabpanel" aria-labelledby="japan-service-tab" hidden>
+                    <h3>査読・編集委員</h3>
+                    <ul>
+                        <li>2025/09-: 会誌「自然言語処理」編集委員.</li>
+                        <li>2020-: 言語処理学会年次大会, 学会誌自然言語処理.</li>
+                    </ul>
+                    <h3>委員活動等</h3>
+                        <ul id="japan-activities-list">
+                        <li>2026: 言語処理学会年次大会委員</li>
+                        <li>2020-2023: <a href="https://sites.google.com/view/snlp-jp">最先端NLP勉強会</a> (2020-2022: 実行委員、2023: 実行委員長)
+                        </li>
+                        </ul>
+                    </section>
+                    </div>
+                    <h2>Research Visits, Talks, and Writings</h2>
+                    <div class="publication-tabs talks-tabs">
+                    <div class="publication-tab-list" role="tablist" aria-label="Talk and writing categories">
+                        <button class="publication-tab" id="international-talks-tab" type="button" role="tab"
+                            aria-selected="true" aria-controls="international-talks">International</button>
+                        <button class="publication-tab" id="japan-talks-tab" type="button" role="tab"
+                            aria-selected="false" aria-controls="japan-talks" tabindex="-1">Japan</button>
+                    </div>
+                    <section id="international-talks" role="tabpanel" aria-labelledby="international-talks-tab">
+                    <ul id="talks-list">
+                        <li>2025/12: Research visit to <a href="https://alexwarstadt.github.io/">LeM🍋N Lab</a> at UCSD, including a research talk [<a href="pdfs/20251201_alex.pdf">slides</a>]</li>
+                        <li>2025/03: Research talk at MBZUAI [<a href="pdfs/Talk_slide.pdf">slides</a>]</li>
+                        <li>2024/05: Research talk at ETH Zürich [<a href="https://speakerdeck.com/kuribayashi4/from-cognitive-modeling-to-typological-universals-investigations-with-large-language-models">slides</a>]</li>
+                        <li>2024/05: Online research talk at The Hong Kong Polytechnic University [<a href="https://speakerdeck.com/kuribayashi4/cognitive-im-plausibility-of-large-language-models">slides</a>]</li>
+                        <li>
+                            2022/12: Research talk at MBZUAI. "Cognitive Plausibility of Neual Language Models."
+                          [<a href="https://speakerdeck.com/kuribayashi4/cognitive-plausibility-of-neural-language-models">slides</a>]
+                        </li>
+                    </ul>
+                    </section>
+                    <section id="japan-talks" role="tabpanel" aria-labelledby="japan-talks-tab" hidden>
+                        <ul id="japan-talks-list">
+                        <li>2025/09: Invited talk at the Evidence-based Linguistics Workshop 2025, NINJAL, Japan. "言語モデルは言語学に何のエビデンスも与えないのでしょうか？" [<a href="pdfs/20250915_ninjal.pdf">資料</a>]</li>
                         <li>2024/12: <u>栗林樹生</u>. 回想記事：Emergent Word Order Universals from Cognitively-Motivated Language Models. [<a href="https://www.jstage.jst.go.jp/article/jnlp/31/4/31_1786/_article/-char/ja">link</a>]</li>
                         <li>2024/12: <u>栗林樹生</u>, 大関洋平. 開催報告：The 13th Edition of the Workshop on Cognitive Modeling and Computational Linguistics (CMCL 2024). [<a href="https://www.jstage.jst.go.jp/article/jnlp/31/4/31_1755/_article/-char/ja">link</a>]</li>
-                        <li>2024/05: Talk at ETH Zürich [<a href="https://speakerdeck.com/kuribayashi4/from-cognitive-modeling-to-typological-universals-investigations-with-large-language-models">slides</a>]</li>
-                        <li>2024/05: Talk at The Hong Kong Polytechnic University (online) [<a href="https://speakerdeck.com/kuribayashi4/cognitive-im-plausibility-of-large-language-models">slides</a>]</li>
-                        <li>2023/08: 
+                        <li>2023/08:
                             <a href="https://sites.google.com/view/snlp-jp/home/2022">最先端NLP勉強会</a>.
                             [<a
                                 href="https://speakerdeck.com/kuribayashi4/zui-xian-duan-nlplun-wen-shao-jie-a-watermark-for-large-language-models">slides</a>]
@@ -508,10 +801,6 @@
                         </li>
                         <li>2023/02: 自然言語処理による論文執筆支援. 東北大学（大学院改革推進センター主催）.
                             [<a href="https://speakerdeck.com/kuribayashi4/zi-ran-yan-yu-chu-li-niyorulun-wen-zhi-bi-zhi-yuan">slides</a>]
-                        </li>
-                        <li>
-                            2022/12: Talk at MBZUAI. "Cognitive Plausibility of Neual Language Models."
-                          [<a href="https://speakerdeck.com/kuribayashi4/cognitive-plausibility-of-neural-language-models">slides</a>]
                         </li>
                         <li>
                             2022/09: <a href="https://sites.google.com/view/snlp-jp/home/2022">最先端NLP勉強会</a>.
@@ -535,151 +824,61 @@
                             [<a
                                 href="./pdfs/snlp2020.pdf">slides</a>]
                         </li>
-                    </ul>
+                        </ul>
+                    </section>
+                    </div>
                     <h2>Tools</h2>
                     <ul>
                         <li>Langsmith Editor<br>[<a href="https://editor.langsmith.co.jp/">system</a> | <a
-                                href="https://help.editor.langsmith.co.jp/">usage</a>] </li>
+                                href="https://help.editor.langsmith.co.jp/">documentation</a>]</li>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/xgzxLpcydG8" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                         <li>TEASPN (Text Editing Assistance Smartness Protocol for Natural Language)<br>[<a
                                 href="https://github.com/teaspn/teaspn-sdk">code</a> | <a
-                                href="https://www.teaspn.org/">document</a>] </li>
+                                href="https://www.teaspn.org/">documentation</a>]</li>
                       <iframe width="560" height="315" src="https://www.youtube.com/embed/9DNqpudDehM" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </ul>
-                    <h2>Reviewer</h2>
-                    <ul>
-                        <li>会誌「自然言語処理」: 編集委員 2025/09-</li>
-                        <li>Top conferences in NLP: 2021-present
-                            <ul>
-                            <li>ACL Rolling Review (typically on Interpretability and Analysis of Models for NLP / Linguistic theories, Cognitive Modeling, and Psycholinguistics)
-                                <ul><li>2024/02-Present: Action Editor</li>
-                                <li>2022/01-2023/12: Reviewer
-                                    <li> Mentioned as a great reviewer: https://aclrollingreview.org/great-oct23-reviewers/ </li>
-                                </li>
-                            </ul>
-                            </li>
-                            <li>ACL: 2019 (secondary), 2020 (secondary), 2021 (Sentiment Analysis, Stylistic Analysis, and Argument Mining), 2023 (Linguistic Theories, Cognitive Modeling and Psycholinguistics.)</li>
-                            <li>EMNLP: 2021 (Linguistic Theories, Cognitive Modeling and Psycholinguistics. Sentiment
-                                Analysis, Stylistic Analysis, and Argument Mining), 2022 (Linguistic Theories, Cognitive Modeling and Psycholinguistics).</li>
-                            </ul>
-                        </li>
-                        <li>COLM: 2024</li>
-                        <li>COLING: 2020, 2022, 2024, 2025 (Language Modeling. Integrated Systems and Applications).</li>
-                        <li>LREC: 2022, 2024 (Language Resources and Evaluation for Psycholinguistics, Cognitive Linguistics and Linguistic Theories. Natural Language Generation (including Summarization)).</li>
-                        <li>INLG: 2020, 2021.</li>
-                        <li>CoNLL: 2024, 2025.</li>
-                        <li>BlackboxNLP: 2024.</li>
-                        <li>2020-Present: 言語処理学会年次大会 (Japan domestic conference), 学会誌自然言語処理.</li>
-                    </ul>
-                    <h2>(Japan) domestic conferences/articles</h3>
-                    <ul>
-                        <li><u>栗林 樹生</u>, 大関 洋平, Souhaib Ben Taieb, 乾 健太郎, Timothy Baldwin. 大規模言語モデルの浅い層が人間の速い言語処理を再現する. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
-                        <li>上田 亮, <u>栗林 樹生</u>, 神藤 駿介, 乾 健太郎. RNNの回帰行列を凍結しても統語構造の獲得は損なわれない. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
-                        <li>木迫 璃玖, <u>栗林 樹生</u>, 笹野 遼平. 大規模言語モデル内部における言語と計算領域の区分. 言語処理学会第31回年次大会, 4pages, 2025/3.</li>
-                        <li><u>栗林樹生</u>, 大関洋平, Timothy Baldwin. 大規模言語モデルの文処理は人間らしいのか？. 言語処理学会第30回年次大会,4pages,2024/3.</li>
-                        <li><u>栗林樹生</u>, 上田亮, 吉田遼, 大関洋平, Ted Briscoe, Timothy Baldwin. どのような言語モデルが不可能な言語を学習してしまうのか？---語順普遍を例に---. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>青木洋一, 工藤慧音, 曾根周作, <u>栗林樹生</u>, 谷口雅弥, 坂口慶祐, 乾健太郎. 言語モデルの思考連鎖的推論における探索戦略の動的変化. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, 谷口雅弥, 曾根周作, 坂口慶祐, 乾健太郎. 算術推論問題における自己回帰型言語モデルの内部機序. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>葉夢宇, <u>栗林樹生</u>, 小林悟郎, 鈴木潤. 文脈内学習における文脈内事例の寄与度推定. 言語処理学会第30回年次大会, 4pages, 2024/3.</li>
-                        <li>都地悠馬, 高橋惇, 横井祥, <u>栗林樹生</u>, 上田亮, 宮原英之. 長距離相互作用する文脈依存言語における相転移現象 -言語モデルの創発現象を統計力学の視点で理解する-. 言語処理学会第30回年次大会,4pages,2024/3.</li>
-                        <li><u>栗林樹生</u>. 百聞は一見に如かず？視覚情報は言語モデルに文の階層構造を教示するか. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformer言語モデルの予測ヘッド内バイアスによる頻度補正効果. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>葉夢宇, <u>栗林樹生</u>, 舟山弘晃, 鈴木潤. 思考連鎖指示における大規模言語モデルの否定表現理解. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>藤原吏生, <u>栗林樹生</u>, 徳久良子, 乾健太郎. 主題化における人間と言語モデルの対照. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 笹野遼平, 乾健太郎. 日本語話者の項省略判断に関するアノテーションとモデリング. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>工藤慧音, 青木洋一, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 坂口慶祐, 乾健太郎. 算術問題におけるニューラルモデルの構成的推論能力. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 坂口慶祐, 乾健太郎. ニューラル記号推論における推論過程の教示方法. 言語処理学会第29回年次大会, 4pages, 2023/3.</li>
-                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第254回自然言語処理研究会, 6pages, 2022/11.</li>
-                        <li>青木洋一, 工藤慧音, <u>栗林樹生</u>, Ana Brassard, 吉川将司, 乾健太郎. 推論過程の性質がニューラルネットの多段推論能力に与える影響. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li><u>栗林樹生</u>. 視覚情報は言語モデルに人間らしい統語的汎化を促すか. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li>大羽未悠, <u>栗林樹生</u>, 大内啓樹, 渡辺太郎. 言語モデルの第二言語獲得効率. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの混ぜ合わせ作用. 第17回NLP若手の会 シンポジウム (YANS), 2022/08.</li>
-                        <li><u>栗林樹生</u>, 大関洋平, Ana Brassard, 乾健太郎. ニューラル言語モデルの過剰な作業記憶. 言語処理学会第28回年次大会, pp.1530-1535, 2022/03.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerにおけるフィードフォワードネットの作用. 言語処理学会第28回年次大会, pp.1072-1077, 2022/03.</li>
-                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平. 情報量に基づく日本語項省略の分析. 言語処理学会第28回年次大会, pp.442-447, 2022/03.</li>
-                        <li>青木洋一, 工藤慧音, Ana Brassard, <u>栗林樹生</u>, 吉川将司, 乾健太郎. 多段の数量推論タスクに対する適応的なモデルの振る舞いの検証. 言語処理学会第28回年次大会, pp.168-172, 2022/03.</li>
-                        <li>石月由紀子, <u>栗林樹生</u>, 松林優一郎, 大関洋平 情報量に基づく日本語項省略の分析. NLP若手の会 (YANS) 第16回シンポジウム,
-                            2021/08.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. 非線形モジュールの加法分解に基づくTransformerレイヤーの解析. NLP若手の会 (YANS)
-                            第16回シンポジウム, 2021/08.</li>
-                        <li><u>栗林樹生</u>, 大関洋平, 伊藤拓海, 吉田遼, 浅原正幸, 乾健太郎. 予測の正確な言語モデルがヒトらしいとは限らない. 言語処理学会第27回年次大会,
-                            pp.267-272,
-                            2021/03.</li>
-                        <li><u>栗林樹生</u>, 大関洋平, 伊藤拓海, 吉田遼, 浅原正幸, 乾健太郎. 日本語の読みやすさに対する情報量に基づいた統一的な解釈. 言語処理学会第27回年次大会,
-                            pp.723-728, 2021/03.</li>
-                        <li>伊藤拓海, <u>栗林樹生</u>, 日高雅俊, 鈴木潤, 乾健太郎. Langsmith: 人とシステムの協働による論文執筆. 言語処理学会第27回年次大会,
-                            pp.1834-1839,
-                            2021/03.</li>
-                        <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 人と言語モデルが捉える文の主題. 言語処理学会第27回年次大会, pp.1307-1312, 2021/03.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. Transformerの文脈を混ぜる作用と混ぜない作用. 言語処理学会第27回年次大会,
-                            pp.1224-1229,
-                            2021/03.</li>
-                        <li>大内啓樹, 鈴木潤, 小林颯介, 横井祥, <u>栗林樹生</u>, 吉川将司,
-                            乾健太郎. 事例ベース依存構造解析のための依存関係表現学習. 言語処理学会第27回年次大会, pp.497-502, 2021/03.</li>
-                        <li>大竹孝樹, 横井祥, 井之上直也, 高橋諒, <u>栗林樹生</u>,
-                            乾健太郎. 物語におけるイベントの顕現性推定と物語類似性計算への応用. 言語処理学会第27回年次大会, pp.1324-1329, 2021/03.</li>
-                        <li>藤原吏生, <u>栗林樹生</u>, 乾健太郎. 日本語言語モデルが選択する文形式の傾向と文脈の影響 ー 主題化・有標語順について. NLP若手の会 (YANS)
-                            第15回シンポジウム, 2020/09.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 乾健太郎. ベクトル長に基づく注意機構と残差結合の包括的な分析. NLP若手の会 (YANS) 第15回シンポジウム,
-                            2020/09.</li>
-                        <li><u>栗林樹生</u>, 伊藤拓海, 鈴木潤, 乾健太郎. 日本語語順分析に言語モデルを用いることの妥当性について. 言語処理学会第26回年次大会,
-                            pp.493-496,
-                            2020/03.<br>[<a href="./pdfs/nlp2020.pdf">slides</a>]</li>
-                        <li>小林 悟郎, <u>栗林樹生</u>, 横井 祥, 鈴木潤, 乾健太郎. ベクトル⻑に基づく自己注意機構の解析. 言語処理学会第26回年次大会, pp.965-968,
-                            2020/03.</li>
-                        <li>大内 啓樹, 鈴木 潤, 小林 颯介, 横井 祥, <u>栗林樹生</u>, 乾健太郎. スパン間の類似性に基づく事例ベース構造予測. 言語処理学会第26回年次大会,
-                            pp.331-334, 2020/03.</li>
-                        <li>大竹 孝樹, 横井 祥, 井之上 直也, 高橋 諒, <u>栗林樹生</u>, 乾健太郎. 言語モデルによる物語中のイベントの顕現性推定. 言語処理学会第26回年次大会,
-                            pp.1089-1092, 2020/03.</li>
-                        <li>伊藤拓海, <u>栗林樹生</u>, 萩原正人, 鈴木潤, 乾健太郎. 英語論文執筆のための統合ライティング支援環境. 第14回NLP若手の会 シンポジウム (YANS),
-                            2019/08.</li>
-                        <li>小林悟郎, <u>栗林樹生</u>, 横井祥, 鈴木潤, 乾健太郎. 文脈を考慮する言語モデルが捉える品詞情報とその軌跡. 第14回NLP若手の会 シンポジウム
-                            (YANS), 2019/08.</li>
-                        <li><u>栗林樹生</u>, 大内啓樹, 井之直也, Paul Reisert, 三好利昇, 鈴木潤, 乾健太郎. 
-                            複数の言語単位に対するスパン表現を用いた論述構造解析. 言語処理学会第25回年次大会, pp.990-993, 2019/03.</li>
-                        <li>*<u>栗林樹生</u>, *伊藤拓海, 内山香, 鈴木潤, 乾健太郎. (* 第一著者と第二著者の貢献度は等しい．)
-                             言語モデルを用いた日本語の語順評価と基本語順の分析. 言語処理学会第25回年次大会, pp.1053-1056, 2019/03.
-                        </li>
-                        <li>*伊藤拓海, *<u>栗林樹生</u>, 小林隼人, 鈴木潤, 乾健太郎. (* 第一著者と第二著者の貢献度は等しい．)
-                             ライティング支援を想定した情報補完型生成. 言語処理学会第25回年次大会, pp.970-973, 2019/03.
-                        </li>
-                        <li><u>Tatsuki Kuribayashi</u>, Paul Reisert, Naoya Inoue and Kentaro Inui. Towards
-                            Exploiting Argumentative Context for Argumentative Relation Identification. 
-                            言語処理学会第24回年次大会, pp.284-287, 2018/03.</li>
-                        <li><u>Tatsuki Kuribayashi</u>, Paul Reisert, Naoya Inoue, Kentaro Inui. Examining
-                            Macro-level Argumentative Structure Features for Argumentative Relation Identification.
-                             第4回自然言語処理シンポジウム・第234回自然言語処理研究会, 6pages, 2017/12.
-                        </li>
-                    </ul>
-                    <h2>Teaching Assistant</h2>
-                    <ul>
-                        <li>Oct.2018-Mar.2019: Advanced Creative Engineering Training (Step-Qi school)</li>
-                    </ul>
-                    <h2>Skills</h2>
-                    <ul>
-                        <li>Python (more than 6 years)</li>
-                        <li>R, TypeScript, React (a litte...)</li>
-                        <li>Tools in NLP/ML research: git, Docker, GCP, pytorch, w&b, TeX...</li>
-                        <li>Designing API specifications for NLP models (with an experience of engineering adviser)</li>
-                        <li>Developing evaluation/leader-board systems for NLP competition (with an experience of engineering adviser)</li>
-                    </ul>
-                    <h2>Hobbies</h2>
-                    <ul>
-                        <li>Saxophone (playing more than 10 years)</li>
-                        <li>Skiing</li>
-                        <li>Traveling</li>
-                    </ul>
+
+
                 </article>
             </div>
         </div>
         <footer>
         </footer>
     </div>
+    <script>
+        (() => {
+            document.querySelectorAll('[role="tablist"]').forEach((tabList) => {
+                const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+                const selectTab = (tab) => {
+                    tabs.forEach((item) => {
+                        const selected = item === tab;
+                        item.setAttribute('aria-selected', selected);
+                        item.tabIndex = selected ? 0 : -1;
+                        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+                    });
+                    tab.focus();
+                };
+
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener('click', () => selectTab(tab));
+                    tab.addEventListener('keydown', (event) => {
+                        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                        event.preventDefault();
+                        let nextIndex = index;
+                        if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+                        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+                        if (event.key === 'Home') nextIndex = 0;
+                        if (event.key === 'End') nextIndex = tabs.length - 1;
+                        selectTab(tabs[nextIndex]);
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
