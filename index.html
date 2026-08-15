@@ -25,6 +25,7 @@
         --profile-photo-column-width: 140px;
         --profile-photo-max-width: 120px;
         --profile-photo-top-spacing: 1.35em;
+        --profile-photo-bottom-spacing: 0.75em;
     }
     .profile-summary,
     .profile-summary tbody {
@@ -34,7 +35,7 @@
     .profile-summary-row {
         display: grid;
         grid-template-columns: minmax(100px, var(--profile-photo-column-width)) minmax(0, 1fr);
-        min-height: 124px;
+        min-height: calc(124px + var(--profile-photo-top-spacing) + var(--profile-photo-bottom-spacing));
     }
     .profile-photo-cell {
         display: block;
